@@ -1,3 +1,4 @@
+
 # First PHP App
 
 **Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
@@ -59,7 +60,7 @@ para:
 
 Observe que somente criamos uma classe ".active", que será usada pela função JavaScript abaixo. 
 
-Abra então, "js/global.js" e altere seu conteúdo conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/global.js), onde criamos uma função "`activeMenu()`" usando os poderes da [jQuery](https://www.w3schools.com/jquery/) que, apesar de "velhinha", é muito "gostosa" de trabalhar...
+Abra então, "global.js" e altere seu conteúdo conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/global.js), onde criamos uma função "`activeMenu()`" usando os poderes da [jQuery](https://www.w3schools.com/jquery/) que, apesar de "velhinha", é muito "gostosa" de trabalhar...
 
 Teste astante a navegação e o efeito do JavaScript acima
 
