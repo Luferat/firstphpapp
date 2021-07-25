@@ -1,5 +1,5 @@
 /** global.js
- * JavaScript global usado pelo template do site.
+ * JavaScript global usado pelo template do aplicativo.
  */
 
 // Executa o JavaScript quando o documento estiver pronto
