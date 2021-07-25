@@ -27,7 +27,7 @@ Temos 6 tabelas, até o momento:
 
 Para configurar o banco de dados no XAMPP rapidamente, usando o modelo:
 
-- Abra o arquivo "[firstphpapp.sql](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_006/firstphpapp.sql)" no editor de códigos;
+- Abra o arquivo "[firstphpapp.sql](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_06/firstphpapp.sql)" no editor de códigos;
 - Selecione todo o seu conteúdo e copie: `[Ctrl]+[A]` → `[Ctrl]+[C]`;
 - Acesse o aplicativo de gestão *PHPMyAdmin*, no navegador, pelo endereço http://localhost/phpmyadmin/;
 - Na coluna direita, clique na guia [SQL](http://localhost/phpmyadmin/index.php?route=/server/sql);
@@ -42,4 +42,4 @@ Colabore com este projeto [clicando aqui](https://github.com/Luferat/firstphpapp
 
 Com o banco de dados já disponível, nas próximas atividades, vamos integrá-lo ao aplicativo definitivamente.
 
-← [Atividade 5](https://github.com/Luferat/firstphpapp/tree/Atividade_005) │ **Atividade 6** │ [Atividade 7](https://github.com/Luferat/firstphpapp/tree/Atividade_007) →
+← [Atividade 5](https://github.com/Luferat/firstphpapp/tree/Atividade_05) │ **Atividade 6** │ [Atividade 7](https://github.com/Luferat/firstphpapp/tree/Atividade_07) →
