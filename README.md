@@ -5,22 +5,22 @@
 *Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
 
 ## Atividade 2 - Tema
-Nesta segunda atividade do projeto do aplicativo Web, vamos iniciar a construção do tema das páginas. Como de praxe, todas a páginas terão a mesma aparência, de forma a firmar a marca do site. Assim, todas usarão as mesmas cores, logotipo, posicionamento, ... *Ou seja, usarão o mesmo tema.*
+Nesta segunda atividade do projeto do aplicativo Web, vamos iniciar a construção do tema das páginas. Como de praxe, todas a páginas terão a mesma aparência, de forma a firmar a marca do aplicativo Web. Assim, todas usarão as mesmas cores, logotipo, posicionamento, ... *Ou seja, usarão o mesmo tema.*
 
-Como qualquer website moderno, algumas características deste tema devem ser observadas:
+Como qualquer aplicativo Web moderno, algumas características deste tema devem ser observadas:
 
 ### Front-end Responsivo
 
-Um site é considerado responsivo quando pode ser visualizado, sem distorções, em dispositivos com larguras de telas diferentes, adaptando seu conteúdo para cada resolução. Para isso, trabalhamos com "breakpoints" ou resoluções de checagem. 
+Um aplicativo Web te é considerado responsivo quando pode ser visualizado, sem distorções, em dispositivos com larguras de telas diferentes, adaptando seu conteúdo para cada resolução. Para isso, trabalhamos com "breakpoints" ou resoluções de checagem. 
 
-> *Para criar um site totalmente responsivo você deve ter um bom domínio dos conceitos de "CSS media query", "CSS Flexbox", "CSS Grid" e "CSS Functions", além de usar o JavaScript para controlar alguns recursos de responsividade como menus dropdown e medições dinâmicas. Outros conceitos importantes a serem trabalhados para a responsividade de um site são "[Mobile-First](https://www.google.com/search?q=Mobile-First)" e "[Web semântica](https://www.google.com/search?q=Web+sem%C3%A2ntica)".*
+> *Para criar um aplicativo Web totalmente responsivo você deve ter um bom domínio dos conceitos de "CSS media query", "CSS Flexbox", "CSS Grid" e "CSS Functions", além de usar o JavaScript para controlar alguns recursos de responsividade como menus dropdown e medições dinâmicas. Outros conceitos importantes a serem trabalhados para a responsividade de um aplicativo Web são "[Mobile-First](https://www.google.com/search?q=Mobile-First)" e "[Web semântica](https://www.google.com/search?q=Web+sem%C3%A2ntica)".*
 
-Se você não tem plenos domínios de CSS, uma dica é usar frameworks de front-end responsivos como o [Bootstrap](https://www.google.com/url?q=https%3A%2F%2Fgetbootstrap.com%2F&sa=D&sntz=1&usg=AFQjCNHea-iYIWyP3UopYgPIOBDbuzm7SA), [Materialize](https://www.google.com/url?q=https%3A%2F%2Fmaterializecss.com%2F&sa=D&sntz=1&usg=AFQjCNEIsSWTlFuZMouWFV43BDiKHGZwdQ), [Foundation](https://www.google.com/url?q=https%3A%2F%2Fget.foundation%2F&sa=D&sntz=1&usg=AFQjCNH0sBxfkqZZSrwGGU8RGhwua-y_bQ), [Ionic](https://www.google.com/url?q=https%3A%2F%2Fionicframework.com%2F&sa=D&sntz=1&usg=AFQjCNF7jg0LTm_bWJd0449SqDKeyqtDDQ) e vários outros, na criação de seus sites. Como eles já fornecem as classes e "media-queries" prontas e documentadas, tem uma linha de aprendizado um pouco mais vertical, mas isso não se aplicará ao nosso aplicativo: por se tratar de um produto didático, ele será feito "na unha". O máximo que vamos usar é uma biblioteca JavaScript, a [jQuery](https://jquery.com/) e alguns plugins dela.
+Se você não tem plenos domínios de CSS, uma dica é usar frameworks de front-end responsivos como o [Bootstrap](https://www.google.com/url?q=https%3A%2F%2Fgetbootstrap.com%2F&sa=D&sntz=1&usg=AFQjCNHea-iYIWyP3UopYgPIOBDbuzm7SA), [Materialize](https://www.google.com/url?q=https%3A%2F%2Fmaterializecss.com%2F&sa=D&sntz=1&usg=AFQjCNEIsSWTlFuZMouWFV43BDiKHGZwdQ), [Foundation](https://www.google.com/url?q=https%3A%2F%2Fget.foundation%2F&sa=D&sntz=1&usg=AFQjCNH0sBxfkqZZSrwGGU8RGhwua-y_bQ), [Ionic](https://www.google.com/url?q=https%3A%2F%2Fionicframework.com%2F&sa=D&sntz=1&usg=AFQjCNF7jg0LTm_bWJd0449SqDKeyqtDDQ) e vários outros, na criação de seus aplicativos Web. Como eles já fornecem as classes e "media-queries" prontas e documentadas, tem uma linha de aprendizado um pouco mais vertical, mas isso não se aplicará ao nosso aplicativo: por se tratar de um produto didático, ele será feito "na unha". O máximo que vamos usar é uma biblioteca JavaScript, a [jQuery](https://jquery.com/) e alguns plugins dela.
 
 ### Acesso Universal
-Um site deve ser minimamente acessível para todas as pessoas que fazem parte de seu "público alvo", o que provavelmente inclui pessoas com deficiências motoras, visuais e auditivas. Focando nisso, alguns conceitos de acessibilidade devem ser corretamente trabalhados e implementados nos sites. Seguem algumas dicas:
+Um aplicativo Web deve ser minimamente acessível para todas as pessoas que fazem parte de seu "público alvo", o que provavelmente inclui pessoas com deficiências motoras, visuais e auditivas. Focando nisso, alguns conceitos de acessibilidade devem ser corretamente trabalhados e implementados nos aplicativos Web. Seguem algumas dicas:
 
--   Um site responsivo facilita o uso por pessoas com baixa visão ou com dificuldades motoras, porque elas podem "controlar o zoom" do conteúdo sem que ocorram distorções que dificultem a navegação como uma barra de rolagem horizontal, por exemplo;
+-   Um aplicativo Web responsivo facilita o uso por pessoas com baixa visão ou com dificuldades motoras, porque elas podem "controlar o zoom" do conteúdo sem que ocorram distorções que dificultem a navegação como uma barra de rolagem horizontal, por exemplo;
  
 -   Evite textos corridos com letras muito pequenas, sendo a resolução minima ideal de 16 pixels de largura para a letra "M" (*Por que a letra "M"? Hummm...*);
  
@@ -30,13 +30,13 @@ Um site deve ser minimamente acessível para todas as pessoas que fazem parte de
 
 > *Em nosso projeto, na maior parte do tempo, mediremos as fontes em "rem".*
 
-- Use as tags semânticas do HTML5 de forma consciente, pois elas facilitam a navegação por "faladores", aplicativos de navegação aural, que ditam o site para pessoas com deficiência visual;
+- Use as tags semânticas do HTML5 de forma consciente, pois elas facilitam a navegação por "faladores", aplicativos de navegação aural, que ditam o aplicativo Web para pessoas com deficiência visual;
  
 - Ainda para auxiliar os "faladores", conheça e trabalhe com o atributo [lang="pt-BR"](https://tableless.com.br/declarando-idiomas-no-html/) e paradigmas de "[CSS Aural](https://www.w3schools.com/cssref/css_ref_aural.asp)";
  
 - Evite o uso de "**hover**" no conteúdo, que é quando o usuário precisa manter o dedo ou cursor sobre o elemento para ver outro que estava oculto, por exemplo, um submenu. Prefira o "**toggle**" que é quando o usuário toca no elemento para ver outro e toca novamente para ocultar;
  
-- Tenha um cuidado especial com a paleta de cores que, além de representar o produto/serviço/cliente, deve facilitar a visualização dos diversos blocos e do conteúdo. Use contrastes entre fundo e texto, evitando fundos com imagens nesses casos. Uma dica é testar o site em "[escala de cinza"](https://pt.wikipedia.org/wiki/N%C3%ADvel_de_cinza) para verificar se os elementos mantém o contraste.
+- Tenha um cuidado especial com a paleta de cores que, além de representar o produto/serviço/cliente, deve facilitar a visualização dos diversos blocos e do conteúdo. Use contrastes entre fundo e texto, evitando fundos com imagens nesses casos. Uma dica é testar o aplicativo em "[escala de cinza"](https://pt.wikipedia.org/wiki/N%C3%ADvel_de_cinza) para verificar se os elementos mantém o contraste.
 
 >*Pesquise mais sobre o assunto...*
 
@@ -45,7 +45,7 @@ Neste momento, o setup já está operacional e pronto para trabalhar...
 
 Abra o arquivo "template.php" no editor e faça as alterações conforme este [modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_02/template.php). Resumidamente, criamos um bloco PHP no topo e:
 
- - Definimos uma constante PATH para acessar o diretório raiz do site;
+ - Definimos uma constante PATH para acessar o diretório raiz do aplicativo Web;
  - Importamos o arquivo "config.php", responsável pela configuração inicial de cada página.
 
 Teste o funcionamento da página, acessando-a no navegador, pelo endereço http://firstphpapp.localhost/template.php, verificando se ocorrem mensagens de erro. Se ocorrerem, revise a atividade com calma, baseando-se no modelo.
@@ -60,8 +60,8 @@ Teste o funcionamento da página, acessando-a no navegador, pelo endereço http:
 ## Criando o tema
 Ainda em "template.php", para criar o tema, vamos começar pela estrutura, ou seja, pelo HTML. Localize os blocos abaixo, onde adicionamos o conteúdo:
 
- - `<header>...</header>` → Contém o logotipo, o nome e o slogan do site;
- - `<nav>...</nav>` → Contém os links para as páginas do site. Observe que usamos ícones Font Awesome para melhorar o visual;
+ - `<header>...</header>` → Contém o logotipo, o nome e o slogan do aplicativo;
+ - `<nav>...</nav>` → Contém os links para as páginas do aplicativo. Observe que usamos ícones Font Awesome para melhorar o visual;
  - `<footer>...</footer>` → Contém a mensagem de copyright (licença) e alguns links para a página inicial e para o topo da página atual. Este link para o topo, aponta para a âncora `<a  id="top"></a>` que está logo no começo do `<body>` de "template.php".
 
 Os três blocos têm estruturas bem simples, sem a necessidade de muitas explicações, mas não tenha preguiça de estudá-los...
