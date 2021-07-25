@@ -14,7 +14,7 @@ O que vamos fazer agora, deve ser feito com bastante atenção. Vamos dividir "t
 
 - `config/footer.php` → Será a parte final, de fechamento do tema e conterá principalmente o `<footer>` e a carga do JavaScript.
 
-- `template.php` → Será nossa página modelo. Todas as novas páginas do site são uma cópia deste arquivo, com as variáveis de configuração modificadas.
+- `template.php` → Será nossa página modelo. Todas as novas páginas do aplicativo Web são uma cópia deste arquivo, com as variáveis de configuração modificadas.
 
 ### Mão na massa
 
@@ -78,7 +78,7 @@ Sobre `$css` e `$js`, são arquivos de CSS e JavaScript adicionais que, opcional
 
 Neste mesmo arquivo "config/config.php", vamos adicionar mais alguns valores na array de configuração `$C`, para definir algumas tags `<meta>` que, juntamente com `<title>` dinâmico, tornarão nosso aplicativo Web mais [SEO Friendly](https://www.google.com/search?q=SEO%20Friendly).
 
-- `$C['meta']['author']` → Nome do autor do site;
+- `$C['meta']['author']` → Nome do autor do aplicativo;
 - `$C['meta']['copyright']` → Proprietário do copyright;
 - `$C['meta']['description']` → Descrição para os mecanismos de busca;
 - `$C['meta']['keywords']` → Palavras chave para os mecanismos de busca.

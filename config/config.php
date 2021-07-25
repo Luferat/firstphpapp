@@ -27,7 +27,7 @@ $C = array(
     'meta' => array( // Meta tags do aplicativo
         'author' => 'Seu nome',
         'copyright' => 'Seu nome',
-        'description' => 'Site modelo para desenvolvimento de aplicativos Web full stack com PHP.',
+        'description' => 'Aplicativo modelo para desenvolvimento de aplicativos Web full-stack com PHP e MySQL.',
         'keywords' => 'HTML, CSS, JavaScript, PHP, MySQL, aplicativo, Web, fullstack, back-end, front-end, dinâmico, flexbox',
     ) 
 );
