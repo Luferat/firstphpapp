@@ -220,7 +220,7 @@ footer div {
 main {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* height: 100%; */
 }
 
 article,
@@ -276,4 +276,43 @@ img.flush {
 /* Texto centralizado */
 .center {
   text-align: center;
+}
+
+/***** Listagem de artigos *****/
+
+.list {
+  display: flex;
+  cursor: pointer;
+  padding: 0 0 1rem 0;
+}
+
+.list:last-child {
+  padding: 0;
+}
+
+.list-img {
+  min-width: 100px;
+  min-height: 100px;
+  border-radius: 0.5rem 0 0 0.5rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.list-content {
+  background: #fff;
+  flex-grow: 1;
+  padding: 1rem;
+  border: 1px dotted grey;
+  border-left: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.list-title {
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+.list:hover .list-content {
+  background: #eee;
 }

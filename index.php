@@ -24,15 +24,66 @@ else
 ///// Título da página /////
 // Se vazio, teremos <title>Nome do aplicativo .:. Slogan do aplicativo</title>
 // Se definido, teremos <title>Nome do aplicativo .:. $title</title>
-$title = 'Página Modelo';
+$title = 'Artigos';
 
 //////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
 //////////////////////////////////////////////////////////////
 
-// Conteúdo principal da página (EXEMPLO)
-$article = '';
-$aside = '';
+// Título da página no HTML (<h2>...</h2>)
+$article = <<<HTML
+
+<h2>Artigos</h2>
+<div class="art-list">
+
+HTML;
+
+// Obtém lista de artigos do banco de dados (query)
+$sql = <<<SQL
+
+SELECT art_id, art_image, art_title, art_intro 
+    FROM articles
+    WHERE art_status = 'ativo'
+        AND art_date <= NOW()
+    ORDER BY art_date DESC;
+
+SQL;
+
+// Executa query e armazena resultados em $res (results)
+$res = $conn->query($sql);
+
+// $res->num_rows conta quantos registros (artigos) foram obtidos 
+if ($res->num_rows == 0) :
+
+    // Se não encontrou artigos, exibe feedback no HTML
+    $article .= <<<HTML
+
+<p class="center">Não encontramos artigos nesta seção!</p>
+
+HTML;
+
+else :
+
+    // Se encontrou, itera cada registro obtido para a array $art[] e formata a saída HTML
+    while ($art = $res->fetch_assoc()) :
+
+        $article .= <<<HTML
+
+    <div class="list artlink" data-link="/view/?{$art['art_id']}">
+        <div class="list-img" style="background-image: url('{$art['art_image']}')" title="{$art['art_title']}"></div>
+        <div class="list-content">
+            <h3 class="list-title">{$art['art_title']}</h3>
+            {$art['art_intro']}
+        </div>
+    </div>
+    
+HTML;
+
+    endwhile;
+
+    $article .= "</div>\n";
+
+endif;
 
 ///////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo terminam aqui. /////

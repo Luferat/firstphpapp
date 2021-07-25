@@ -10,6 +10,9 @@ function runApp() {
 
     // Destaca o item de menu ativo
     activeMenu();
+
+    // Ao clicar em elementos com atributo data-link='', executa 'goRoute()'
+    $(document).on('click', '*[data-link]', goRoute);
 }
 
 // Destaca o item de menu ativo
@@ -30,4 +33,10 @@ function activeMenu() {
             // Destaca item de menu
             $(this).addClass('active');
     });
+}
+
+// Acessa o endereço de data-link=''
+function goRoute() {
+    var route = $(this).attr('data-link');
+    location.href = route;
 }

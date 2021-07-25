@@ -5,67 +5,145 @@
 
 *Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
 
-## Atividade 8 - Criando as páginas
+## Atividade 9 - Seção de artigos
 
-Com nosso tema pronto e para "matar a ansiedade", finalmente, vamos construir as páginas e a estrutura de navegação do aplicativo Web.
+Conforme vimos na [introdução](https://github.com/Luferat/firstphpapp) deste projeto, nosso objetivo é criar um aplicativo full-stack minimalista usando PHP e MySQL no back-end. Trata-se de um projeto simples, mas com muito espaço para evoluir, até mesmo, tornando-se um grande portal de conteúdo.
 
-Primeiro, precisamos ter em mente que todas as páginas serão, basicamente, cópias de "template.php", então vamos preparar este arquivo conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/template.php). Tá, somente removemos os *lorem ipsum* das variáveis `$article` e `$aside`, deixando-as vazias e prontas para nosso conteúdo.
+De qualquer forma, a principal seção do aplicativo será seu conteúdo, ou seja, a publicação de artigos, e é justamente essa parte que vamos começar a construir nesta atividade.
 
-Além dos artigos publicados, teremos mais 2 seções, então crie os diretórios para elas:
+Já temos, no banco de dados, a tabela com os artigos (article) e alguns artigos "fake" publicados. Vamos então obter esses artigos e listá-los na seção de artigos do aplicativo, com algumas observações:
 
-- `contacts` → Seção de contatos;
-- `about` → Seção "Sobre".
+- Somente os artigos com o campo `status = ativo` serão visíveis, assim, se você quiser ocultar um artigo por algum motivo, remoção, por exemplo, basta alterar o valor do campo `status` da tabela `article` para, por exemplo, `inativo`, para este registro e ele não será listado;
 
-Então, nossa estrutura de diretórios ficará assim:
 
-    [C:]
-      ├─> xampp
-      │    ├─> htdocs
-      •    │    ├─> firstphpapp
-      •    •    │    ├─> about
-      •    •    •    ├─> contacts
-      •    •    •    ├─> img
-                •    ├─> config
+- Os artigos serão ordenados pela data, com os mais recentes aparecendo primeiro; 
 
-Dentro de cada um dos 2 novos diretórios, coloque uma cópia de "template.php", lembrando de renomear cada uma de "template.php" para "index.php".
+- Os artigos com a data no futuro não serão listados, assim, se você quiser agendar um artigo para o futuro, basta colocar a data correta em que ele será publicado, e ele só será listado à partir daí. *Sim, podemos fazer agendamento de artigos...*
 
-Finalmente, crie mais uma cópia de "template.php" na raiz do aplicativo, renomeando-a para "index.php". Essa será a página inicial do aplicativo, onde os artigos serão listados!
+## Mão na massa
 
-> *Não apague ou modifique "template.php" à partir daqui, porque ela será modelo para outras páginas que incluirmos em nosso aplicativo...*
+Começamos editando a variável `$title` em "index.php":
 
-Com isso, a navegação do aplicativo já está funcionando. Teste, clicando nos itens do menu principal e no rodapé.
+    $title = 'Artigos'; // <title> da página.
 
-### Um pouco de JavaScript
+Ainda em "index.php", lembre-se que, todo o código PHP que escrevemos fica dentro da seção abaixo:
 
-Vamos melhorar a navegabilidade pelo aplicativo usando JavaScript. Simplesmente, vamos "destacar" no menu principal, a seção em que estamos no momento.
+    ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
+    •••
+    ///// Os códigos PHP para gerar o conteúdo terminam aqui. /////
 
-> *Se você tem trauma de JavaScript, o código é bem simples, mas, de qualquer forma, já está na hora de procurar o psicanalista!*
+Assim, evite alterar alguma coisa fora deste bloco.
 
-Primeiro precisamos criar uma classe para destacar o item do menu. Edite o trecho abaixo de "global.css", ou use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/global.css), alterando de:
+Altere então "index.php" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_09/index.php). O código está bem comentado, mas seguem alguns detalhes:
 
-	nav a:hover {
-        color: rgb(255, 255, 0);
-        text-decoration: none;
-    }
+- Começamos pela consulta ao banco de dados, com a query abaixo. Estude-a com atenção e observe que atendemos a todos os requisitos da listagem de artigos que vimos lá em cima:
 
-para:
+	  SELECT art_id, art_image, art_title, art_intro 
+	      FROM articles
+	      WHERE art_status = 'ativo'
+              AND art_date <= NOW()
+	      ORDER BY art_date DESC;
 
-	nav a:hover {
-        color: rgb(255, 255, 0);
-        text-decoration: none;
-    }
-    .active {
-	    color: rgb(255, 166, 0);
-    }
+- O resultado da consulta é armazenado em `$res` pela linha `$res = $conn->query($sql)`;
 
-Observe que somente criamos uma classe ".active", que será usada pela função JavaScript abaixo. 
+- Com `while($art = $res->fetch_assoc())`, iteramos os registros obtidos para  assim, gerar a listagem.
 
-Abra então, "global.js" e altere seu conteúdo conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/global.js), onde criamos uma função "`activeMenu()`" usando os poderes da [jQuery](https://www.w3schools.com/jquery/) que, apesar de "velhinha", é muito "gostosa" de trabalhar...
+Precisamos de um CSS para esta listagem, edite então "global.css" e adicione o conteúdo, conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_09/global.css).
 
-Teste astante a navegação e o efeito do JavaScript acima
+> *Como o CSS usado para listar os artigos será necessário em outras seções do aplicativo, preferimos incluí-lo em "glocal.css" em vez de criar um CSS somente para "articles".*
 
-Está gostando? Está chato, feio e bobo? Tá bugado? Então, contribua [clicando aqui](https://github.com/Luferat/firstphpapp/issues).
+Fizemos também, um pequeno ajuste neste mesmo arquivo "global.css" para corrigir um *bug* na listagem, onde, basicamente comentamos o trecho `height: 100%;` na estilização de `main`:
 
-Nas próximas atividades, vamos criar a seção de artigos.
+	main {
+	  display: flex;
+	  flex-direction: column;
+	  /* height: 100%; */
+	}
 
-← [Atividade 7](https://github.com/Luferat/firstphpapp/tree/Atividade_07) │ **Atividade 8** │ [Atividade 9](https://github.com/Luferat/firstphpapp/tree/Atividade_09) →
+Agora, precisamos que cada um dos itens listados seja "clicável" para lermos o artigo completo. Para simplificar o código HTML, usaremos JavaScript para isso. Edite "global.js" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_09/global.js).
+
+Criamos uma função simples que redireciona a URL para o endereço descrito no atributo `data-link` de qualquer elemento do HTML. Como essa função será útil em outras páginas, estamos incluindo ela em "global.js" em vez de criar um arquivo JavaScript só para "articles".
+
+Teste e verifique que, ao clicar em um artigo, somos redirecionados para "view". Essa página/seção ainda não existe, então ocorre um *erro 404*, mas, nas próximas atividades, corrigiremos isso. 
+
+Na próxima atividade, vamos listar as categorias na sidebar e filtrar os artigos listados por essas categorias. 
+
+Se tiver alguma sugestão, crítica e principalmente, se achou algum bug, não deixe de colaborar [clicando aqui](https://github.com/Luferat/firstphpapp/issues).
+
+Até...
+
+← [Atividade 8](https://github.com/Luferat/firstphpapp/tree/Atividade_08) │ **Atividade 9** │ [Atividade 10](https://github.com/Luferat/firstphpapp/tree/Atividade_10) →
+# First PHP App
+
+**Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
+
+*Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
+
+## Atividade 9 - Seção de artigos
+
+Conforme vimos na [introdução](https://github.com/Luferat/firstphpapp) deste projeto, nosso objetivo é criar um aplicativo full-stack minimalista usando PHP e MySQL no back-end. Trata-se de um projeto simples, mas com muito espaço para evoluir, até mesmo, tornando-se um grande portal de conteúdo.
+
+De qualquer forma, a principal seção do aplicativo será seu conteúdo, ou seja, a publicação de artigos, e é justamente essa parte que vamos começar a construir nesta atividade.
+
+Já temos, no banco de dados, a tabela com os artigos (article) e alguns artigos "fake" publicados. Vamos então obter esses artigos e listá-los na seção de artigos do aplicativo, com algumas observações:
+
+- Somente os artigos com o campo `status = ativo` serão visíveis, assim, se você quiser ocultar um artigo por algum motivo, remoção, por exemplo, basta alterar o valor do campo `status` da tabela `article` para, por exemplo, `inativo`, para este registro e ele não será listado;
+
+
+- Os artigos serão ordenados pela data, com os mais recentes aparecendo primeiro; 
+
+- Os artigos com a data no futuro não serão listados, assim, se você quiser agendar um artigo para o futuro, basta colocar a data correta em que ele será publicado, e ele só será listado à partir daí. *Sim, podemos fazer agendamento de artigos...*
+
+## Mão na massa
+
+Começamos editando a variável `$title` em "index.php":
+
+    $title = 'Artigos'; // <title> da página.
+
+Ainda em "index.php", lembre-se que, todo o código PHP que escrevemos fica dentro da seção abaixo:
+
+    ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
+    •••
+    ///// Os códigos PHP para gerar o conteúdo terminam aqui. /////
+
+Assim, evite alterar alguma coisa fora deste bloco.
+
+Altere então "index.php" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_09/index.php). O código está bem comentado, mas seguem alguns detalhes:
+
+- Começamos pela consulta ao banco de dados, com a query abaixo. Estude-a com atenção e observe que atendemos a todos os requisitos da listagem de artigos que vimos lá em cima:
+
+	  SELECT art_id, art_image, art_title, art_intro 
+	      FROM articles
+	      WHERE art_status = 'ativo'
+              AND art_date <= NOW()
+	      ORDER BY art_date DESC;
+
+- O resultado da consulta é armazenado em `$res` pela linha `$res = $conn->query($sql)`;
+
+- Com `while($art = $res->fetch_assoc())`, iteramos os registros obtidos para  assim, gerar a listagem.
+
+Precisamos de um CSS para esta listagem, edite então "global.css" e adicione o conteúdo, conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_09/global.css).
+
+> *Como o CSS usado para listar os artigos será necessário em outras seções do aplicativo, preferimos incluí-lo em "glocal.css" em vez de criar um CSS somente para "articles".*
+
+Fizemos também, um pequeno ajuste neste mesmo arquivo "global.css" para corrigir um *bug* na listagem, onde, basicamente comentamos o trecho `height: 100%;` na estilização de `main`:
+
+	main {
+	  display: flex;
+	  flex-direction: column;
+	  /* height: 100%; */
+	}
+
+Agora, precisamos que cada um dos itens listados seja "clicável" para lermos o artigo completo. Para simplificar o código HTML, usaremos JavaScript para isso. Edite "global.js" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_09/global.js).
+
+Criamos uma função simples que redireciona a URL para o endereço descrito no atributo `data-link` de qualquer elemento do HTML. Como essa função será útil em outras páginas, estamos incluindo ela em "global.js" em vez de criar um arquivo JavaScript só para "articles".
+
+Teste e verifique que, ao clicar em um artigo, somos redirecionados para "view". Essa página/seção ainda não existe, então ocorre um *erro 404*, mas, nas próximas atividades, corrigiremos isso. 
+
+Na próxima atividade, vamos listar as categorias na sidebar e filtrar os artigos listados por essas categorias. 
+
+Se tiver alguma sugestão, crítica e principalmente, se achou algum bug, não deixe de colaborar [clicando aqui](https://github.com/Luferat/firstphpapp/issues).
+
+Até...
+
+← [Atividade 8](https://github.com/Luferat/firstphpapp/tree/Atividade_08) │ **Atividade 9** │ [Atividade 10](https://github.com/Luferat/firstphpapp/tree/Atividade_10) →
