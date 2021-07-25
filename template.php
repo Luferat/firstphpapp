@@ -17,7 +17,7 @@ require_once(__DIR__ . '/config/config.php');
 if (intval(date('Y')) > intval($C['appYear']))
 
     // Se o ano atual é maior que o ano de criação do aplicativo, exibe os dois anos
-    $appYear = $C['siteYear'] . ' ' . date('Y');
+    $appYear = $C['appYear'] . ' ' . date('Y');
 else
 
     // Senão, exibe o ano de criação do aplicativo
@@ -76,7 +76,7 @@ HTML;
         }
     </style>
     <link rel="icon" href="<?= $C['favicon'] ?>">
-    <title><?= $C['siteTitle'] ?></title>
+    <title><?= $C['appTitle'] ?></title>
 </head>
 
 <body>

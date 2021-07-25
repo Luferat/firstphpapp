@@ -1,5 +1,5 @@
 /** global.css
- * Folhas de estilos globais usadas pelo template do site.
+ * Folhas de estilos globais usadas pelo template do aplicativo.
  */
 
 /* 
@@ -43,7 +43,7 @@ Padroniza a visualização da página nos navegadores atuais.
   
   /*
   Background
-  Estiliza o fundo (background) do site.
+  Estiliza o fundo (background) do aplicativo.
   */
   
   body {
