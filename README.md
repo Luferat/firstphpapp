@@ -1,113 +1,102 @@
-
 # First PHP App
 
 **Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
 
 *Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
 
-## Atividade 4 - Páginas mais dinâmicas
+## Atividade 5 - Montando o tema
 
-Nesta atividade, vamos tentar automatizar algumas coisas no tema da página, de forma a tornar a configuração do aplicativo mais independente do código fonte. A ideia é que as configurações mais genéricas e usuais como logotipo, nome do aplicativo e imagem do fundo sejam obtidos a partir de um único local, preferencialmente do banco de dados.
+Nesta atividade, vamos finalmente montar o tema, integrar as configurações dinâmicas a este e preparar para a criação das páginas e conteúdos do aplicativo.
 
-A primeira tarefa é definir essas configurações e salvá-las em uma variável. Futuramente, essa variável será criada pelo banco de dados, mas por hora, vamos armazenar os dados estaticamente, editando o arquivo "config/config.php" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_04/config/config.php). 
+O que vamos fazer agora, deve ser feito com bastante atenção. Vamos dividir "template.php" em 3 partes:
 
-O que fizemos foi, por questões de compatibilidade com o HTML5, definir todas as saídas do PHP em UTF-8. Essa deve ser a primeira linha "executável" de nosso aplicativo Web, sempre:
+- `config/header.php` → Será a parte inicial de todas as páginas, contendo principalmente as tags `<head>`, `<header>` e `<nav>`. Todo o pré-processamento do tema também será feito neste arquivo que será incluído em todas as páginas;
 
-	•••
-	// PHP com UTF-8
-	header('Content-Type: text/html; charset=UTF-8');
-	•••
+- `config/footer.php` → Será a parte final, de fechamento do tema e conterá principalmente o `<footer>` e a carga do JavaScript.
 
-Agora, criamos a variável `$C` com tudo que queremos automatizar no tema:
+- `template.php` → Será nossa página modelo. Todas as novas páginas do site são uma cópia deste arquivo, com as variáveis de configuração modificadas.
 
-    •••
-	// Array com as configurações do tema
-	$C = array(
-		'favicon' => '/img/logo01.png', // Ícone dos favoritos
-		'appLogo' => '/img/logo02.png', // Logotipo
-		'appTitle' => 'Meu Primeiro App', // Título do aplicativo
-		'appSlogan' => 'Primeiros passos no PHP', // Slogan do aplicativo
-		'appYear' => '2021', // Ano inicial do copyright
-		'appOwner' => 'Seu Nome', // Proprietário do copyright
-		'backgroundColor' => 'rgb(113, 34, 43)', // Cor de fundo do aplicativo
-		'backgroundImage' => '/img/background02.jpg'
-	);
-    •••
+### Mão na massa
 
-Vamos "*passear*" pelos códigos HTML do tema e fazer as substituições necessárias:
+Antes de seguir, abra "template.php" no navegador, acessando o endereço http://firstphpapp.localhost/template.php e confirme que tudo funciona corretamente.
 
-Edite "template.php", conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_04/template.php), onde configuramos dinamicamente o fundo da página:
+Siga os passos abaixo com atenção, porque, como disse antes, essa é uma etapa crítica:
 
-	•••
-	<style>
-	/* Define o background da página */
-	body {
-	    background-color: <?= $C['backgroundColor'] ?>;
-	    background-image: url('<?= $C['backgroundImage'] ?>');
-	}
-	</style>
-	•••
+- Abra "template.php" no editor e **localize** a diretiva `<!DOCTYPE html>` e a abertura da tag `<main>`;
+  
+- **Recorte** todo o código, desde `<!DOCTYPE html>`, inclusive, até `<main>`, incluindo essa tag;
  
-Também o favicon (ícone dos favoritos) e a tag `<title>`:
+- Crie e edite "config/header.php" no editor e **cole** o conteúdo recortado neste arquivo;
+ 
+- Volte até "template.php" e **localize** o fechamento da tag `<main>`, ou seja, `</main>`;
+ 
+- **Recorte** essa tag e todo o código até o final do arquivo;
+ 
+- Crie e edite "config/footer.php" no editor e **cole** o conteúdo no final deste arquivo;
+ 
+- No final do processo, "template.php" terá somente o trecho de HTML abaixo, logo após o código PHP que já existe:
 
-    •••
-    <link rel="icon" href="<?= $C['favicon'] ?>">
-    <title><?= $C['appTitle'] ?></title>
-    •••
+      <?php
+      •••
+      ?>
+      <article><?= $article ?></article>
+      <aside><?= $aside ?></aside>
 
-Editamos o conteúdo do bloco `<header>...</header>`:
+- Justamente no trecho acima, do arquivo "template.php", faça o *require* de "theme/theme_header.php". Deve ficar assim:
 
-    •••
-    <header>
-        <a  href="/"><img src="<?= $C['appLogo'] ?>" alt="<?= $C['appTitle'] ?>"></a>
-        <h1><?= $C['appTitle'] ?><small><?= $C['appSlogan'] ?></small></h1>
-    </header>
-    •••
+      <?php
+      •••
+      // Importa abertura do tema
+      require_once(PATH .  '/theme/theme_header.php');
+      ?>
+      <article><?= $article ?></article>
+      <aside><?= $aside ?></aside>
 
-Também o bloco `<footer>...</footer>`, para quem, calculamos o ano de criação do aplicativo para a mensagem de *copyright* no começo do código:
+- Faça o mesmo com "config/footer.php", só que no final de "template.php". Até aqui, "template.php" deve ficar assim:
 
-    •••
-    // Define o(s) ano(s) na mensagem de copyright
-    if (intval(date('Y')) > intval($C['appYear']))
-        // Se o ano atual é maior que o ano de criação do aplicativo, exibe os dois anos
-        $appYear = $C['appYear'] . ' ' . date('Y');
-    else
-        // Se não, exibe o ano de criação do aplicativo
-        $appYear = $C['appYear'];
-    •••
+      <?php
+      •••
+      // Importa abertura do tema
+      require_once(PATH . '/config/header.php');
+      ?>
+      <article><?= $article ?></article>
+      <aside><?= $aside ?></aside>
+      <?php
+      // Importa fechamento do tema
+      require_once(PATH . '/config/footer.php');
+      ?>
 
-E, logo depois, exibimos a mensagem de *copyright* neste bloco, à partir de `$C`:
+Teste "template.php" acessando http://firstphpapp.localhost/template.php pelo navegador. Se deu certo, nada deve ter mudado na página.
 
-    •••
-    <div>&copy; Copyright <?= $appYear ?> <?= $C['appOwner'] ?>.</div>
-    •••
+### Mais dinamismo para as páginas
 
-Um último ajuste, para que tudo dê certo, é remover as configurações de background das folhas de estilo, editando "global.css" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_04/global.css).
+Vamos aproveitar que o tema está ficando pronto e inserir mais algumas configurações dinâmicas. Abra "template.php" no editor e use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_05/template.php) para editá-lo. Sobre as alterações, inserimos a variável `$title`, que armazena o título da página, permitindo que cada página tenha sua própria tag `<title>` gerada dinamicamente.
 
-    •••
-	body {
-	  /* background-color: rgb(113, 34, 43); */
-	  background-size: cover;
-	  background-repeat: no-repeat;
-	  background-attachment: fixed;
-	  background-position: center;
-	  /* background-image: url("/img/background02.jpg"); */
-	}
-	•••
-    
-Observe que agora, se você quiser alterar uma dessas configurações no seu aplicativo Web, basta alterar o valor da chave correta de `$C` em "theme/config.php", lembrando que, em breve, esses valores virão do banco de dados.
+Essa e algumas outras variáveis devem ser declaradas em "config/config.php", conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_05/config/config.php). Uma vez que criamos uma nova página, cópia de "template.php", ajustaremos o valor desta variável `$title` que será processada pelos arquivos do tema. 
 
-### Exercícios ###
+Sobre `$css` e `$js`, são arquivos de CSS e JavaScript adicionais que, opcionalmente, podem ser usados. Se você incluir um arquivo "index.css" e/ou "index.js" no mesmo diretório da página atual, eles serão detectados e incluídos automaticamente pela página. Ou seja, o código ainda vai procurar por "index.css" e "index.js" na seção. Se achar, inclui cada um, se não, nada acontece.
 
-- Troque os valores da variável `$C` em "config/config.php" e veja os resultados;
-- Troque especificamente o ano do aplicativo (`$C['appYear']`) para dois ou três anos atrás;
-- Experimente acrescentar novas configurações, por exemplo, a fonte do aplicativo.
+Neste mesmo arquivo "config/config.php", vamos adicionar mais alguns valores na array de configuração `$C`, para definir algumas tags `<meta>` que, juntamente com `<title>` dinâmico, tornarão nosso aplicativo Web mais [SEO Friendly](https://www.google.com/search?q=SEO%20Friendly).
 
-Para as próximas atividades, vamos montar o tema e construir o conteúdo. Vamos precisar do banco de dados, então, não custa nada já se preparar. Algumas documentações sugeridas são:
+- `$C['meta']['author']` → Nome do autor do site;
+- `$C['meta']['copyright']` → Proprietário do copyright;
+- `$C['meta']['description']` → Descrição para os mecanismos de busca;
+- `$C['meta']['keywords']` → Palavras chave para os mecanismos de busca.
 
-- https://www.w3schools.com/sql/default.asp;
-- https://www.w3schools.com/php/php_mysql_intro.asp;
+Editamos "config/header.php" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_05/config/header.php), para processar as variáveis e gerar as tags HTML dinamicamente.
 
-Estude, [colabore](https://github.com/Luferat/firstphpapp/issues) e até a próxima atividade.
-   
-← [Atividade 3](https://github.com/Luferat/firstphpapp/tree/Atividade_03) │ **Atividade 4** │ [Atividade 5](https://github.com/Luferat/firstphpapp/tree/Atividade_05) →
+Editamos também "config/footer.php", conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_05/config/footer.php), para inserir a variável do JavaScript adicional.
+
+### Exercícios
+
+- Experimente definir um valor diferente para `$title` em "template.php" e veja os resultados no código fonte, na tag `<title>...</title>`.
+
+- Adicione um arquivo "index.css" na raiz do aplicativo e verifique que, no [código fonte](view-source:http://firstphpapp.localhost/template.php) de "template.php", dentro do bloco `<head>...</head>`, surge uma nova tag `<link rel="stylesheet" href="index.css">`.
+
+- Agora, adicione um novo arquivo "index.js" na raiz do aplicativo e verifique que, no [código fonte](view-source:http://firstphpapp.localhost/template.php) de "template.php", antes de `</body>`, surge uma nova tag `<script src="index.js"></script>`.
+
+Muita coisa, não é? Então, está no hora de colaborar, [clicando aqui](https://github.com/Luferat/firstphpapp/issues). Não dói nadinha! Juro!
+
+Na próxima atividade vamos modelar o banco de dados e tornar nosso aplicativo dependente dele.
+
+← [Atividade 4](https://github.com/Luferat/firstphpapp/tree/Atividade_04) │ **Atividade 5** │ [Atividade 6](https://github.com/Luferat/firstphpapp/tree/Atividade_06) →

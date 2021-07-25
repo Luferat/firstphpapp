@@ -14,16 +14,21 @@ define('PATH', $_SERVER['DOCUMENT_ROOT']);
 require_once(PATH . '/config/config.php');
 
 // Define o(s) ano(s) na mensagem de copyright
+// Se o ano atual é maior que o ano de criação do aplicativo, exibe os dois anos
+// Senão, exibe o ano de criação do aplicativo
 if (intval(date('Y')) > intval($C['appYear']))
-
-    // Se o ano atual é maior que o ano de criação do aplicativo, exibe os dois anos
-    $appYear = $C['appYear'] . ' ' . date('Y');
+    $app_year = $C['appYear'] . ' ' . date('Y');
 else
+    $app_year = $C['appYear'];
 
-    // Senão, exibe o ano de criação do aplicativo
-    $appYear = $C['appYear'];
+///// Título da página /////
+// Se vazio, teremos <title>Nome do aplicativo .:. Slogan do aplicativo</title>
+// Se definido, teremos <title>Nome do aplicativo .:. $title</title>
+$title = 'Página Modelo';
 
+//////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
+//////////////////////////////////////////////////////////////
 
 // Conteúdo principal da página (EXEMPLO)
 $article = <<<HTML
@@ -56,62 +61,21 @@ $aside = <<<HTML
 
 HTML;
 
+///////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo terminam aqui. /////
+///////////////////////////////////////////////////////////////
+
+// Importa abertura do tema
+require_once(PATH .  '/config/header.php');
 
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/global.css">
-    <style>
-        /* Define o background da página */
-        body {
-            background-color: <?= $C['backgroundColor'] ?>;
-            background-image: url('<?= $C['backgroundImage'] ?>');
-        }
-    </style>
-    <link rel="icon" href="<?= $C['favicon'] ?>">
-    <title><?= $C['appTitle'] ?></title>
-</head>
+<article><?= $article ?></article>
+<aside><?= $aside ?></aside>
 
-<body>
+<?php
 
-    <a id="top"></a>
+// Importa fechamento do tema
+require_once(PATH . '/config/footer.php');
 
-    <div class="wrap">
-
-        <header>
-            <a href="/"><img src="<?= $C['appLogo'] ?>" alt="<?= $C['appTitle'] ?>"></a>
-            <h1><?= $C['appTitle'] ?><small><?= $C['appSlogan'] ?></small></h1>
-        </header>
-
-        <nav>
-            <a href="/"><i class="fas fa-pen-nib fa-fw"></i><span>Artigos</span></a>
-            <a href="/contacts"><i class="fas fa-comments fa-fw"></i><span>Contatos</span></a>
-            <a href="/about"><i class="fas fa-info-circle fa-fw"></i><span>Sobre</span></a>
-        </nav>
-
-        <main>
-            <article><?= $article ?></article>
-            <aside><?= $aside ?></aside>
-        </main>
-
-        <footer>
-            <a href="/" title="Página inicial"><i class="fas fa-home fa-fw"></i></a>
-            <div>&copy; Copyright <?= $appYear ?> <?= $C['appOwner'] ?>.</div>
-            <a href="#top" title="Topo da página"><i class="fas fa-arrow-alt-circle-up fa-fw"></i></a>
-        </footer>
-
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/global.js"></script>
-
-</body>
-
-</html>
+?>
