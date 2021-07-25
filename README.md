@@ -40,7 +40,7 @@ Vamos melhorar a navegabilidade pelo aplicativo usando JavaScript. Simplesmente,
 
 > *Se você tem trauma de JavaScript, o código é bem simples, mas, de qualquer forma, já está na hora de procurar o psicanalista!*
 
-Primeiro precisamos criar uma classe para destacar o item do menu. Edite o trecho abaixo de "css/global.css", ou use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/global.css), alterando de:
+Primeiro precisamos criar uma classe para destacar o item do menu. Edite o trecho abaixo de "global.css", ou use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/global.css), alterando de:
 
 	nav a:hover {
         color: rgb(255, 255, 0);
