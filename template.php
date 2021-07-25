@@ -2,7 +2,7 @@
 
 /**
  * template.php
- * Página modelo para criação do tema do site.
+ * Página modelo para criação do tema do aplicativo.
  * Esta página servirá de modelo para todas as outras quando o tema estiver pronto.
  */
 
@@ -69,7 +69,7 @@ HTML;
     <div class="wrap">
 
         <header>
-            <a href="/"><img src="/img/logo02.png" alt="Meu Primeiro Site"></a>
+            <a href="/"><img src="/img/logo02.png" alt="Meu Primeiro App"></a>
             <h1>Meu Primeiro App<small>Primeiros passos no PHP</small></h1>
         </header>
 
