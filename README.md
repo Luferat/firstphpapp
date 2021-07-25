@@ -1,102 +1,45 @@
+
 # First PHP App
 
 **Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
 
 *Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
 
-## Atividade 5 - Montando o tema
+## Atividade 6 - O banco de dados
 
-Nesta atividade, vamos finalmente montar o tema, integrar as configurações dinâmicas a este e preparar para a criação das páginas e conteúdos do aplicativo.
+Nesta atividade, vamos modelar o banco de dados que vai suportar o aplicativo Web. Como sabemos, usaremos MySQL e conceitos bem básicos de tabelas, nada muito sofisticado. A modelagem pode ser vista [aqui](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_06/img/firstsite_database.png).
 
-O que vamos fazer agora, deve ser feito com bastante atenção. Vamos dividir "template.php" em 3 partes:
+![Modelagem do banco de dados](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_06/img/firstsite_database.png)
 
-- `config/header.php` → Será a parte inicial de todas as páginas, contendo principalmente as tags `<head>`, `<header>` e `<nav>`. Todo o pré-processamento do tema também será feito neste arquivo que será incluído em todas as páginas;
 
-- `config/footer.php` → Será a parte final, de fechamento do tema e conterá principalmente o `<footer>` e a carga do JavaScript.
+Temos 6 tabelas, até o momento:
 
-- `template.php` → Será nossa página modelo. Todas as novas páginas do site são uma cópia deste arquivo, com as variáveis de configuração modificadas.
+- `config`  → Armazena as configurações do tema, que serão salvas no *array* `$C`;
+- `contacts` → Armazena os contatos do formulário de contatos do aplicativo, que criaremos futuramente;
+- `authors` → Armazena alguns dados sobre os autores do conteúdo (artigos) do aplicativo;
+- `categories` → Armazena as categorias de conteúdo do aplicativo;
+- `articles` → Onde fica o conteúdo do aplicativo, os artigos;
+- `art_cat` → Faz o relacionamento entre *artigos* e *categorias*.
 
-### Mão na massa
+[Neste arquivo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_06/firstphpapp.sql), fazemos a criação do banco de dados, das tabelas, dos relacionamentos e já inserimos alguns dados "fake" para facilitar os testes do aplicativo em desenvolvimento. 
 
-Antes de seguir, abra "template.php" no navegador, acessando o endereço http://firstphpapp.localhost/template.php e confirme que tudo funciona corretamente.
+>*Observe que, toda vez que o SQL acima é executado, o banco de dados é destruído e recriado. Isso é bom em **tempo de desenvolvimento**, mas é desastroso em **tempo de produção**, ou seja, quando o aplicativo já está publicado e acessível na Internet, portanto, este arquivo SQL **DEVE SER EXCLUÍDO** depois que o aplicativo for publicado em definitivo.*
 
-Siga os passos abaixo com atenção, porque, como disse antes, essa é uma etapa crítica:
+Para configurar o banco de dados no XAMPP rapidamente, usando o modelo:
 
-- Abra "template.php" no editor e **localize** a diretiva `<!DOCTYPE html>` e a abertura da tag `<main>`;
-  
-- **Recorte** todo o código, desde `<!DOCTYPE html>`, inclusive, até `<main>`, incluindo essa tag;
- 
-- Crie e edite "config/header.php" no editor e **cole** o conteúdo recortado neste arquivo;
- 
-- Volte até "template.php" e **localize** o fechamento da tag `<main>`, ou seja, `</main>`;
- 
-- **Recorte** essa tag e todo o código até o final do arquivo;
- 
-- Crie e edite "config/footer.php" no editor e **cole** o conteúdo no final deste arquivo;
- 
-- No final do processo, "template.php" terá somente o trecho de HTML abaixo, logo após o código PHP que já existe:
+- Abra o arquivo "[firstphpapp.sql](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_006/firstphpapp.sql)" no editor de códigos;
+- Selecione todo o seu conteúdo e copie: `[Ctrl]+[A]` → `[Ctrl]+[C]`;
+- Acesse o aplicativo de gestão *PHPMyAdmin*, no navegador, pelo endereço http://localhost/phpmyadmin/;
+- Na coluna direita, clique na guia [SQL](http://localhost/phpmyadmin/index.php?route=/server/sql);
+- Cole `[Ctrl]+[V]` o conteúdo do arquivo na caixa de texto da guia SQL;
+- Clique no botão `[Executar]` logo abaixo da caixa de texto para executar o código e gerar os dados.
 
-      <?php
-      •••
-      ?>
-      <article><?= $article ?></article>
-      <aside><?= $aside ?></aside>
+Observe com atenção se ocorrem erros. Caso ocorra, refaça a atividade com calma e atenção.
 
-- Justamente no trecho acima, do arquivo "template.php", faça o *require* de "theme/theme_header.php". Deve ficar assim:
+> *Se preferir, use a guia "importar" do PHPMyAdmin para importar o arquivo "firstphpapp.sql". O processo é alguns segundos mais lento, mas retorna os mesmos resultados.*
 
-      <?php
-      •••
-      // Importa abertura do tema
-      require_once(PATH .  '/theme/theme_header.php');
-      ?>
-      <article><?= $article ?></article>
-      <aside><?= $aside ?></aside>
+Colabore com este projeto [clicando aqui](https://github.com/Luferat/firstphpapp/issues).
 
-- Faça o mesmo com "config/footer.php", só que no final de "template.php". Até aqui, "template.php" deve ficar assim:
+Com o banco de dados já disponível, nas próximas atividades, vamos integrá-lo ao aplicativo definitivamente.
 
-      <?php
-      •••
-      // Importa abertura do tema
-      require_once(PATH . '/config/header.php');
-      ?>
-      <article><?= $article ?></article>
-      <aside><?= $aside ?></aside>
-      <?php
-      // Importa fechamento do tema
-      require_once(PATH . '/config/footer.php');
-      ?>
-
-Teste "template.php" acessando http://firstphpapp.localhost/template.php pelo navegador. Se deu certo, nada deve ter mudado na página.
-
-### Mais dinamismo para as páginas
-
-Vamos aproveitar que o tema está ficando pronto e inserir mais algumas configurações dinâmicas. Abra "template.php" no editor e use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_05/template.php) para editá-lo. Sobre as alterações, inserimos a variável `$title`, que armazena o título da página, permitindo que cada página tenha sua própria tag `<title>` gerada dinamicamente.
-
-Essa e algumas outras variáveis devem ser declaradas em "config/config.php", conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_05/config/config.php). Uma vez que criamos uma nova página, cópia de "template.php", ajustaremos o valor desta variável `$title` que será processada pelos arquivos do tema. 
-
-Sobre `$css` e `$js`, são arquivos de CSS e JavaScript adicionais que, opcionalmente, podem ser usados. Se você incluir um arquivo "index.css" e/ou "index.js" no mesmo diretório da página atual, eles serão detectados e incluídos automaticamente pela página. Ou seja, o código ainda vai procurar por "index.css" e "index.js" na seção. Se achar, inclui cada um, se não, nada acontece.
-
-Neste mesmo arquivo "config/config.php", vamos adicionar mais alguns valores na array de configuração `$C`, para definir algumas tags `<meta>` que, juntamente com `<title>` dinâmico, tornarão nosso aplicativo Web mais [SEO Friendly](https://www.google.com/search?q=SEO%20Friendly).
-
-- `$C['meta']['author']` → Nome do autor do site;
-- `$C['meta']['copyright']` → Proprietário do copyright;
-- `$C['meta']['description']` → Descrição para os mecanismos de busca;
-- `$C['meta']['keywords']` → Palavras chave para os mecanismos de busca.
-
-Editamos "config/header.php" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_05/config/header.php), para processar as variáveis e gerar as tags HTML dinamicamente.
-
-Editamos também "config/footer.php", conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_05/config/footer.php), para inserir a variável do JavaScript adicional.
-
-### Exercícios
-
-- Experimente definir um valor diferente para `$title` em "template.php" e veja os resultados no código fonte, na tag `<title>...</title>`.
-
-- Adicione um arquivo "index.css" na raiz do aplicativo e verifique que, no [código fonte](view-source:http://firstphpapp.localhost/template.php) de "template.php", dentro do bloco `<head>...</head>`, surge uma nova tag `<link rel="stylesheet" href="index.css">`.
-
-- Agora, adicione um novo arquivo "index.js" na raiz do aplicativo e verifique que, no [código fonte](view-source:http://firstphpapp.localhost/template.php) de "template.php", antes de `</body>`, surge uma nova tag `<script src="index.js"></script>`.
-
-Muita coisa, não é? Então, está no hora de colaborar, [clicando aqui](https://github.com/Luferat/firstphpapp/issues). Não dói nadinha! Juro!
-
-Na próxima atividade vamos modelar o banco de dados e tornar nosso aplicativo dependente dele.
-
-← [Atividade 4](https://github.com/Luferat/firstphpapp/tree/Atividade_04) │ **Atividade 5** │ [Atividade 6](https://github.com/Luferat/firstphpapp/tree/Atividade_06) →
+← [Atividade 5](https://github.com/Luferat/firstphpapp/tree/Atividade_005) │ **Atividade 6** │ [Atividade 7](https://github.com/Luferat/firstphpapp/tree/Atividade_007) →
