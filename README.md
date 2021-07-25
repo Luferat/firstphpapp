@@ -7,13 +7,13 @@
 
 ## Atividade 1 - Estrutura inicial
 
-Como vimos na [introdução](https://github.com/Luferat/firstphpapp), vamos desenvolver um site full stack simples usando PHP como back-end. Acesse o diretório do projeto no seu computador, que criamos na [introdução](https://github.com/Luferat/firstphpapp), e crie a estrutura de diretórios necessária. No exemplo abaixo (e em todos os outros), estamos usando o XAMPP para Windows, instalado do diretório padrão (C:\xampp\). Altere para o diretório raiz do seu servidor Web, se necessário:
+Como vimos na [introdução](https://github.com/Luferat/firstphpapp), vamos desenvolver um aplicativo full stack simples usando PHP como back-end. Acesse o diretório do projeto no seu computador, que criamos na [introdução](https://github.com/Luferat/firstphpapp), e crie a estrutura de diretórios necessária. No exemplo abaixo (e em todos os outros), estamos usando o XAMPP para Windows, instalado do diretório padrão (C:\xampp\). Altere para o diretório raiz do seu servidor Web, se necessário:
 
 	[C:]
 	  ├─> xampp                  → Instalação do XAMPP
 	  │    ├─> htdocs            → Raiz do Apache no XAMPP
-	  •    │    ├─> firstphpapp  → Raiz (/) do site usando "wildcards"
-	  •    •    •    ├─> img     → Imagens do site
+	  •    │    ├─> firstphpapp  → Raiz (/) do aplicativo usando "wildcards"
+	  •    •    •    ├─> img     → Imagens do aplicativo
 	            •    ├─> config  → Template, includes, configurações, funções...
 
 Crie um novo arquivo, na raiz do aplicativo, chamado "template.php" e abra-o no editor de códigos. Ele terá a estrutura básica do html, conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_01/template.php). Com o arquivo criado, acesse-o pelo navegador, pelo endereço http://firstphpapp.localhost/template.php.
@@ -24,7 +24,7 @@ Observe que estamos usando alguns componentes externos para facilitar nosso trab
 
 Também já "link(amos)" as folhas de estilos principais (/global.css) e o JavaScript principal (/global.js). Estude o código com calma para encontrar essas referências.
 
-> *Não criaremos o arquivo "index" por enquanto, para facilitar a navegação entre os códigos do site pelo navegador. "template.php" será um "esqueleto" inicial para o site, é apenas um modelo para todas as outras páginas, inclusive a index.*
+> *Não criaremos o arquivo "index" por enquanto, para facilitar a navegação entre os códigos do aplicativo pelo navegador. "template.php" será um "esqueleto" inicial para o aplicativo, é apenas um modelo para todas as outras páginas, inclusive a index.*
 
 Crie também o arquivo "global.css", abra-o no editor e use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_01/global.css) para começar.
 
@@ -37,7 +37,7 @@ No diretório "/img/", temos algumas imagens, obtidas do site [Freepik.com](http
 Já em "config/", criamos e editamos, por enquanto, os arquivos abaixo:
 
  - [config.ini](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_01/config/config.ini) → Arquivo de configuração da conexão com o MySQL;
- - [config.php](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_01/config/config.php) → Fará toda a pré-configuração das páginas do site. 
+ - [config.php](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_01/config/config.php) → Fará toda a pré-configuração das páginas do aplicativo. 
 
 Talvez esses arquivos não façam sentido agora, mas eles tornarão nosso aplicativo Web muito mais dinâmico, mais fácil de criar e de replicar no futuro.
 
