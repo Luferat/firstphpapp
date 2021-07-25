@@ -4,80 +4,67 @@
 
 *Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
 
-## Atividade 7 - Integrando o banco de dados
+## Atividade 8 - Criando as páginas
 
-Vamos integrar o aplicativo e o banco de dados, começando pela conexão de "config/config.php" com o MySQL. Os dados de conexão ficam armazenados em "[config/config.ini](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_07/config/config.ini)".  Este arquivo contém 2 blocos ou seções distintas:
+Com nosso tema pronto e para "matar a ansiedade", finalmente, vamos construir as páginas e a estrutura de navegação do aplicativo Web.
 
- - A primeira seção contém os dados de conexão com o MySQL do XAMPP. Observe que, o nome da seção, entre colchetes, é justamente o *SERVER_NAME* do aplicativo no XAMPP:
+Primeiro, precisamos ter em mente que todas as páginas serão, basicamente, cópias de "template.php", então vamos preparar este arquivo conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/template.php). Tá, somente removemos os *lorem ipsum* das variáveis `$article` e `$aside`, deixando-as vazias e prontas para nosso conteúdo.
 
-		[firstphpapp.localhost]
-		server = 'localhost'
-		database = 'firstphpapp'
-		user = 'root'
-		password = ''
+Além dos artigos publicados, teremos mais 2 seções, então crie os diretórios para elas:
 
-> *Esses valores são padrão do XAMPP. Caso você tenha mudado alguma coisa no MySQL do XAMPP, ajuste aqui também.*
+- `contacts` → Seção de contatos;
+- `about` → Seção "Sobre".
 
-- Já a segunda seção contém as configurações no provedor de hospedagem. Como ainda não hospedamos o aplicativo, esses dados estão em branco. Observe que aqui, "www.firstphpapp.com" deve ser substituído pelo SERVER_NAME do aplicativo, já hospedado:
+Então, nossa estrutura de diretórios ficará assim:
 
-      [www.firstphpapp.com]
-      server = ''
-      database = ''
-      user = ''
-      password = ''
+    [C:]
+      ├─> xampp
+      │    ├─> htdocs
+      •    │    ├─> firstphpapp
+      •    •    │    ├─> about
+      •    •    •    ├─> contacts
+      •    •    •    ├─> img
+                •    ├─> config
 
-O trecho abaixo, dentro de "theme/config.php" é o responsável por ler os dados do arquivo "theme/config.ini", usando para isso a função "`parse_ini_file()`" do PHP:
+Dentro de cada um dos 2 novos diretórios, coloque uma cópia de "template.php", lembrando de renomear cada uma de "template.php" para "index.php".
 
-	•••
-	$i = parse_ini_file($_SERVER['DOCUMENT_ROOT'].'/theme/config.ini', true);
-	foreach ($i as $k => $v) :
-	    if ($_SERVER['SERVER_NAME'] == $k):
-	        @$conn = new mysqli($v['server'], $v['user'], $v['password'], $v['database']);
-	        if ($conn->connect_error) die("Falha de conexão com o banco e dados: " . $conn->connect_error);
-	    endif;
-	endforeach;
-	•••
+Finalmente, crie mais uma cópia de "template.php" na raiz do aplicativo, renomeando-a para "index.php". Essa será a página inicial do aplicativo, onde os artigos serão listados!
 
-O código compara o SERVER_NAME atual com os que estão no arquivo "theme/config.ini" e conecta ao MySQL com as credenciais corretas. A conexão foi feita usando a classe "mysqli" do PHP, com um toque de orientação à objetos.
+> *Não apague ou modifique "template.php" à partir daqui, porque ela será modelo para outras páginas que incluirmos em nosso aplicativo...*
 
-> *Alguém "mais ~~doente~~ experiente" diria para usarmos PDO porque é "fashion",  "hardcore", complicado e midiático, mas há uma falha de paradigmas aí! Só usamos PDO se pretendermos, algum dia, trocar o tipo de banco de dados desse aplicativo, o que não é o caso. Hã!? Se projetamos nosso aplicativo para usar **MySQL** e pretendemos mudar de SGBD um dia, **temos uma falha gravíssima nesse projeto**, não concorda!*
+Com isso, a navegação do aplicativo já está funcionando. Teste, clicando nos itens do menu principal e no rodapé.
 
-- [Para saber mais sobre conexões PHP / MySQL](https://www.w3schools.com/php/php_mysql_connect.asp).
+### Um pouco de JavaScript
 
-Uma vez que o MySQL esteja conectado, vamos fazer alguns "setups" iniciais para sintonizá-lo com nosso PHP. Basicamente, *setamos* todas as transações *PHP ←→ MySQL* para UTF-8 e as datas (meses e dias da semana) para português do Brasil:
+Vamos melhorar a navegabilidade pelo aplicativo usando JavaScript. Simplesmente, vamos "destacar" no menu principal, a seção em que estamos no momento.
 
-	•••
-	$conn->query("SET NAMES 'utf8'");
-	$conn->query('SET character_set_connection=utf8');
-	$conn->query('SET character_set_client=utf8');
-	$conn->query('SET character_set_results=utf8');
-	$conn->query('SET GLOBAL lc_time_names = pt_BR');
-	$conn->query('SET lc_time_names = pt_BR');
-	•••
+> *Se você tem trauma de JavaScript, o código é bem simples, mas, de qualquer forma, já está na hora de procurar o psicanalista!*
 
-Pois, lembra-se da array `$C` que faz a configuração do aplicativo? Vamos trocar a atribuição de valores estáticos dela pelos dados da tabela "config" do banco de dados. O trecho abaixo resolve isso:
+Primeiro precisamos criar uma classe para destacar o item do menu. Edite o trecho abaixo de "css/global.css", ou use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/global.css), alterando de:
 
-	•••
-	$sql = "SELECT * FROM config";
-	$res = $conn->query($sql);
-	while ($data = $res->fetch_assoc()) :
-	    •••
-	endwhile;
-	•••
+	nav a:hover {
+        color: rgb(255, 255, 0);
+        text-decoration: none;
+    }
 
-Abra o arquivo "config/config.php" no editor e troque os códigos pelos [deste modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_07/config/config.php).
+para:
 
-Teste a página "template.php" no navegador, acessando http://firstphpapp.localhost/template.php. Não devem ocorrer mensagens de erro, nem da *view* da página nem no console do navegador.
+	nav a:hover {
+        color: rgb(255, 255, 0);
+        text-decoration: none;
+    }
+    .active {
+	    color: rgb(255, 166, 0);
+    }
 
-### Exercícios
+Observe que somente criamos uma classe ".active", que será usada pela função JavaScript abaixo. 
 
-1. Experimente alterar os valores dos registros da tabela "config", usando o PHPMyAdmin, e veja os resultados na página "template.php".
-2. Descomente (remova "//") a linha abaixo de "config/config.php" e veja no código fonte da página "template.php" como fica a array `$C`. Lembre-se de comentá-la ou removê-la após os estudos...
+Abra então, "js/global.js" e altere seu conteúdo conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_08/global.js), onde criamos uma função "`activeMenu()`" usando os poderes da [jQuery](https://www.w3schools.com/jquery/) que, apesar de "velhinha", é muito "gostosa" de trabalhar...
 
-       // print_r($C); exit;
+Teste astante a navegação e o efeito do JavaScript acima
 
-E, aqui, praticamente encerramos a construção do tema do aplicativo Web. Nas próximas atividades, vamos "gerar" as páginas e seus respectivos conteúdos...
+Está gostando? Está chato, feio e bobo? Tá bugado? Então, contribua [clicando aqui](https://github.com/Luferat/firstphpapp/issues).
 
-Críticas, sugestões e informes de bugs são bem vindos. [Clique aqui](https://github.com/Luferat/firstphpapp/issues) para colaborar!
+Nas próximas atividades, vamos criar a seção de artigos.
 
-← [Atividade 6](https://github.com/Luferat/firstphpapp/tree/Atividade_06) │ **Atividade 7** │ [Atividade 8](https://github.com/Luferat/firstphpapp/tree/Atividade_08) →
+← [Atividade 7](https://github.com/Luferat/firstphpapp/tree/Atividade_07) │ **Atividade 8** │ [Atividade 9](https://github.com/Luferat/firstphpapp/tree/Atividade_09) →
