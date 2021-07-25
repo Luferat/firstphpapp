@@ -17,13 +17,21 @@ else
 
 // Pesquisa e processa CSS adicional da página 'index.css'
 // Se exite um arquivo "index.css" no mesmo local da página
-if (file_exists('index.css'))    
+if (file_exists('index.css'))
     $page_css = '<link rel="stylesheet" href="index.css">' . "\n";
 
 // Processa JavaScript adicional da página
 // Se exite um arquivo "index.js" no mesmo local da página
-if (file_exists('index.js'))    
+if (file_exists('index.js'))
     $page_js = '<script src="index.js"></script>' . "\n";
+
+// Define o(s) ano(s) na mensagem de copyright
+// Se o ano atual é maior que o ano de criação do aplicativo, exibe os dois anos
+// Senão, exibe o ano de criação do aplicativo
+if (intval(date('Y')) > intval($C['appYear']))
+    $app_year = $C['appYear'] . ' ' . date('Y');
+else
+    $app_year = $C['appYear'];
 
 ?>
 <!DOCTYPE html>
