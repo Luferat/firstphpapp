@@ -9,7 +9,7 @@ Vamos, neste projeto, vamos criar um aplicativo Web (site de Internet) full stac
 
 Usaremos, na maior parte do tempo, o PHP procedural, com uma ou outra "pitada" de orientação à objetos.
 
->  *Estamos preparando outro projeto (PHP Second Site) que será, em sua maior parte, com PHP orientado a objetos. Este projeto começará a ser disponibilizado em breve, assim que este aqui tiver a versão 1.0 concluída.*
+>  *Estamos preparando outro projeto que será, em sua maior parte, com PHP orientado a objetos. Este projeto começará a ser disponibilizado em breve, assim que este aqui tiver a versão 1.0 concluída.*
 
 	              ┌──────────┐     ←→╔══════════╗ 
 	              │index.php │     ←→║ database ║
@@ -24,7 +24,7 @@ Usaremos, na maior parte do tempo, o PHP procedural, com uma ou outra "pitada" d
 
 Atualmente na versão 8, o PHP é uma linguagem moderna, atualizada, de código aberto, gratuita e com todos os conceitos e recursos necessários ao desenvolvimento de um aplicativo Web poderoso. É extremamente leve, consumindo poucos recursos de máquina e muito fácil de aprender, porque tem uma sintaxe simples, sem frescuras. Além disso, é extremamente fácil hospedar sites em PHP na Internet, inclusive em provedores de hospedagem gratuita, coisa que pode ser literalmente impossível com outras linguagens de back-end.
 
->  *Já tentou alguma vez hospedar um site em Python ou mesmo Java? Gratuito ainda por cima? Vai... Tenta...*
+>  *Já tentou alguma vez hospedar um aplicativo Web em Python ou mesmo Java? Gratuito ainda por cima? Vai... Tenta...*
 
 Ao contrário do que os concorrentes tentam te vender, o PHP ainda é uma linguagem totalmente aplicável, sendo usada na maioria dos CMS (Content Management System) mais usados da Web como [WordPress](https://br.wordpress.org/), [Drupal](https://www.drupal.org), [Joomla](https://www.joomla.org/) muitos outros.
 
@@ -73,7 +73,7 @@ A própria documentação do XAMPP ensina a configurar o uso de wildcards no Apa
 
 - [Desenvolvendo vários sites no Apache](http://catabits.com.br/desenvolvendo-varios-sites-no-apache/)
 
-> *É possível ainda usar o recurso de Virtual Hosts do servidor Web, mas essa abordagem é mais trabalhosa e requer alguma intervenção no sistema operacional para cada novo site criado. Contraprodutivo para desenvolvedores...*
+> *É possível ainda usar o recurso de Virtual Hosts do servidor Web, mas essa abordagem é mais trabalhosa e requer alguma intervenção no sistema operacional para cada novo aplicativo Web criado. Contraprodutivo para desenvolvedores...*
 
 Se você ativou os *wildcards* no Apache, crie um diretório "firstphpapp" no diretório raiz do Apache (htdocs) - no XAMPP para Windows, normalmente fica como "`C:\xampp\htdocs\firstphpapp`" - e teste acessando, pelo navegador, o endereço [http://firstphpapp.localhost/](http://firstphpapp.localhost/).
 
@@ -81,7 +81,7 @@ Como vamos usar o MySQL, teste também o acesso a este, juntamente com o aplicat
 
 Além do servidor Web previamente configurado, vamos precisar de um editor de códigos. Sugiro o [Visual Studio Code](https://code.visualstudio.com/) e não tenho mais o que dizer sobre isso!
 
-Obviamente, um navegador Web será necessário. Use o [Chrome](https://www.google.com/intl/pt-BR/chrome/)! Por que? Mais da metade do mundo usa ele e o restante usa todos os outros, então, desenvolva nele e depois, se necessário, faça ajustes para os outros. Não é questão de gosto do desenvolvedor e sim dos clientes que vão acessar seu site. Sem mimimi... Simples assim...
+Obviamente, um navegador Web será necessário. Use o [Chrome](https://www.google.com/intl/pt-BR/chrome/)! Por que? Mais da metade do mundo usa ele e o restante usa todos os outros, então, desenvolva nele e depois, se necessário, faça ajustes para os outros. Não é questão de gosto do desenvolvedor e sim dos clientes que vão acessar seu aplicativo Web. Sem mimimi... Simples assim...
 
 ## Contribuições
 
@@ -89,6 +89,6 @@ Se você quiser participar deste projeto ou mesmo dar outro rumo para ele, não 
 
 ## Vamos começar
 
-Lembre-se que cada atividade está descrita na documentação de um branch deste repositório, assim como os arquivos de exemplo. Então, se seu setup já está ok, já escolheu seu editor de códigos favorito e já abriu o site no navegador, mesmo que ele esteja vazio, acesse o branch "[Atividade_01](https://github.com/Luferat/FirstPHPApp/tree/Atividade_01)" e vamos começar.
+Lembre-se que cada atividade está descrita na documentação de um branch deste repositório, assim como os arquivos de exemplo. Então, se seu setup já está ok, já escolheu seu editor de códigos favorito e já abriu o aplicativo Web no navegador, mesmo que ele esteja vazio, acesse o branch "[Atividade_01](https://github.com/Luferat/FirstPHPApp/tree/Atividade_01)" e vamos começar.
 
 **Introdução** │ [Atividade 1](https://github.com/Luferat/FirstPHPApp/tree/Atividade_01) →
