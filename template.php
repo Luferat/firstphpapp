@@ -2,16 +2,26 @@
 
 /**
  * template.php
- * Página modelo para criação do tema do site.
+ * Página modelo para criação do tema do aplicativo.
  * Esta página servirá de modelo para todas as outras quando o tema estiver pronto.
  */
 
 // Define constante com o diretório raiz (/) do aplicativo
-// Também podemos usar a constante mágica __DIR__
+// Também podemos usar a constante mágica __DIR__, se disponível no servidor
 define('PATH', $_SERVER['DOCUMENT_ROOT']);
 
 // Importa arquivo de configuração da página
-require_once(PATH . '/config/config.php');
+require_once(__DIR__ . '/config/config.php');
+
+// Define o(s) ano(s) na mensagem de copyright
+if (intval(date('Y')) > intval($C['appYear']))
+
+    // Se o ano atual é maior que o ano de criação do aplicativo, exibe os dois anos
+    $appYear = $C['siteYear'] . ' ' . date('Y');
+else
+
+    // Senão, exibe o ano de criação do aplicativo
+    $appYear = $C['appYear'];
 
 ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
 
@@ -58,8 +68,15 @@ HTML;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/global.css">
-    <link rel="icon" href="/img/logo01.png">
-    <title>First PHP App</title>
+    <style>
+        /* Define o background da página */
+        body {
+            background-color: <?= $C['backgroundColor'] ?>;
+            background-image: url('<?= $C['backgroundImage'] ?>');
+        }
+    </style>
+    <link rel="icon" href="<?= $C['favicon'] ?>">
+    <title><?= $C['siteTitle'] ?></title>
 </head>
 
 <body>
@@ -69,8 +86,8 @@ HTML;
     <div class="wrap">
 
         <header>
-            <a href="/"><img src="/img/logo02.png" alt="Meu Primeiro Site"></a>
-            <h1>Meu Primeiro App<small>Primeiros passos no PHP</small></h1>
+            <a href="/"><img src="<?= $C['appLogo'] ?>" alt="<?= $C['appTitle'] ?>"></a>
+            <h1><?= $C['appTitle'] ?><small><?= $C['appSlogan'] ?></small></h1>
         </header>
 
         <nav>
@@ -86,7 +103,7 @@ HTML;
 
         <footer>
             <a href="/" title="Página inicial"><i class="fas fa-home fa-fw"></i></a>
-            <div>&copy; Copyright 2021 Seu Nome</div>
+            <div>&copy; Copyright <?= $appYear ?> <?= $C['appOwner'] ?>.</div>
             <a href="#top" title="Topo da página"><i class="fas fa-arrow-alt-circle-up fa-fw"></i></a>
         </footer>
 
