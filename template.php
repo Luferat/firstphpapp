@@ -13,14 +13,6 @@ define('PATH', $_SERVER['DOCUMENT_ROOT']);
 // Importa arquivo de configuração da página
 require_once(PATH . '/config/config.php');
 
-// Define o(s) ano(s) na mensagem de copyright
-// Se o ano atual é maior que o ano de criação do aplicativo, exibe os dois anos
-// Senão, exibe o ano de criação do aplicativo
-if (intval(date('Y')) > intval($C['appYear']))
-    $app_year = $C['appYear'] . ' ' . date('Y');
-else
-    $app_year = $C['appYear'];
-
 ///// Título da página /////
 // Se vazio, teremos <title>Nome do aplicativo .:. Slogan do aplicativo</title>
 // Se definido, teremos <title>Nome do aplicativo .:. $title</title>
