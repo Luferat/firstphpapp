@@ -80,3 +80,133 @@ Limita o tamanho do conteúdo e centraliza a página em telas maiores.
   display: flex;
   flex-direction: column;
 }
+
+/*
+Quadro principal
+Limita o tamanho do conteúdo e centraliza a página em telas maiores.
+*/
+
+.wrap {
+  position: relative;
+  width: 100%;
+  min-width: 280px;
+  max-width: 1024px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+Cabeçalho <header>
+*/
+
+header {
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  display: block;
+  width: 4rem;
+  margin: 0.25rem;
+}
+
+header h1 {
+  margin: 0 0 0 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+header h1 small {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: normal;
+  letter-spacing: 0.15rem;
+  color: grey;
+}
+
+/* Menu <nav> */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 1);
+  border-top: 1px dotted rgba(0, 0, 0, 1);
+  border-bottom: 1px dotted rgba(0, 0, 0, 1);
+}
+
+nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.9rem;
+}
+
+nav a:first-child {
+  margin-right: auto;
+}
+
+nav a:hover {
+  color: rgb(255, 255, 0);
+  text-decoration: none;
+}
+
+nav a i {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 576px) {
+  nav a {
+    flex-direction: row;
+  }
+  nav a i {
+    font-size: 1rem;
+    margin-bottom: 0;
+    margin-right: 0.5rem;
+  }
+}
+
+/*
+  Conteúdo central <main>
+  Força o rodapé <footer> para o final da viewport.
+  */
+
+main {
+  flex-grow: 1;
+  background: #fff;
+}
+
+/* Rodape <footer> */
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(16, 16, 16, 0.9);
+  color: rgba(255, 255, 255, 1);
+  border-top: 1px dotted rgba(16, 16, 16, 0.9);
+  border-bottom: 1px dotted rgba(16, 16, 16, 0.9);
+}
+
+footer a {
+  padding: 0.25rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+footer a:hover {
+  color: #000;
+  background: #ccc;
+  text-decoration: none;
+}
+
+footer div {
+  font-size: 0.9rem;
+  color: #ccc;
+}
