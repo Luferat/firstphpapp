@@ -43,7 +43,7 @@ Um site deve ser minimamente acessível para todas as pessoas que fazem parte de
 ## Mão na massa
 Neste momento, o setup já está operacional e pronto para trabalhar...
 
-Abra o arquivo "template.php" no editor e faça as alterações conforme este [modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_02/template.php). Resumidamente, o que fizemos, foi:
+Abra o arquivo "template.php" no editor e faça as alterações conforme este [modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_02/template.php). Resumidamente, criamos um bloco PHP no topo e:
 
  - Definimos uma constante PATH para acessar o diretório raiz do site;
  - Importamos o arquivo "config.php", responsável pela configuração inicial de cada página.
