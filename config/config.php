@@ -7,3 +7,6 @@
 
 // PHP com UTF-8
 header('Content-Type: text/html; charset=utf-8');
+
+// Define variáveis do tema
+$article = $aside = '';

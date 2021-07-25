@@ -210,3 +210,66 @@ footer div {
   font-size: 0.9rem;
   color: #ccc;
 }
+
+/* Conteúdo central <main>, <article> e <aside> */
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+article,
+aside {
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+article {
+  flex-grow: 1;
+}
+
+aside {
+  border-top: 3px dotted grey;
+}
+
+article h2:first-child {
+  margin: -1rem -1rem 1rem -1rem;
+  padding: 1rem;
+  background: #ddd;
+}
+
+aside h3 {
+  margin: 1rem -1rem 1rem -1rem;
+  padding: 1rem;
+  background: #ddd;
+}
+
+aside h3:first-child {
+  margin-top: -1rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    flex-direction: row;
+  }
+
+  aside {
+    min-width: 200px;
+    max-width: 200px;
+    border: none;
+    border-left: 3px dotted grey;
+  }
+}
+
+/***** Estilos de uso geral *****/
+
+/* Imagens responsivas */
+img.flush {
+  max-width: 100%;
+}
+
+/* Texto centralizado */
+.center {
+  text-align: center;
+}
