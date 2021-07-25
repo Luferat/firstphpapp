@@ -1,6 +1,6 @@
 # First PHP App
 
-**Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de sites "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
+**Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
 
 Vamos, neste projeto, vamos criar um aplicativo Web (site de Internet) full stack, ou seja, front-end e back-end, usando as linguagens de computador citadas acima. Será um aplicativo pequeno, minimalista, mas totalmente funcional e com espaço para muitas implementações novas.
 
@@ -21,7 +21,7 @@ Usaremos, na maior parte do tempo, o PHP procedural, com uma ou outra "pitada" d
 
 ## Por que PHP
 
-Atualmente na versão 8, o PHP é uma linguagem moderna, atualizada, de código aberto, gratuita e com todos os conceitos e recursos necessários ao desenvolvimento de um aplicativo Web poderoso. É extremamente leve, consumindo poucos recursos de máquina e muito fácil de aprender, porque tem uma sintaxe simples, sem frescuras. Além disso, é extremamente fácil hospedar sites em PHP na Internet, inclusive em provedores de hospedagem gratuita, coisa que pode ser literalmente impossível com outras linguagens de back-end.
+Atualmente na versão 8, o PHP é uma linguagem moderna, atualizada, de código aberto, gratuita e com todos os conceitos e recursos necessários ao desenvolvimento de um aplicativo Web poderoso. É extremamente leve, consumindo poucos recursos de máquina e muito fácil de aprender, porque tem uma sintaxe simples, sem frescuras. Além disso, é extremamente fácil hospedar aplicativos em PHP na Internet, inclusive em provedores de hospedagem gratuita, coisa que pode ser literalmente impossível com outras linguagens de back-end.
 
 >  *Já tentou alguma vez hospedar um aplicativo Web em Python ou mesmo Java? Gratuito ainda por cima? Vai... Tenta...*
 
@@ -58,7 +58,7 @@ Obviamente, existem muitas outras fontes de pesquisa, cursos online gratuitos e 
 
 ## Primeiros passos
 
-Para executar as atividades e testar os resultados usaremos um servidor Web local com suporte a scripts PHP e banco de dados MySQL. Existem alguns aplicativos empacotados que já configuram no computador um ambiente de servidor Web funcional para desenvolver sites como [XAMPP](https://www.apachefriends.org/pt_br/index.html), [WAMP Server](https://www.wampserver.com/en/), [EasyPHP](https://www.easyphp.org/), [USBWebServer](https://www.usbwebserver.net/webserver/) e outros. Além das versões para Windows, alguns deles funcionam no Linux e no MacOS também.
+Para executar as atividades e testar os resultados usaremos um servidor Web local com suporte a scripts PHP e banco de dados MySQL. Existem alguns aplicativos empacotados que já configuram no computador um ambiente de servidor Web funcional para desenvolver aplicativos Web como [XAMPP](https://www.apachefriends.org/pt_br/index.html), [WAMP Server](https://www.wampserver.com/en/), [EasyPHP](https://www.easyphp.org/), [USBWebServer](https://www.usbwebserver.net/webserver/) e outros. Além das versões para Windows, alguns deles funcionam no Linux e no MacOS também.
 
 Existe ainda a possibilidade, necessitando de maiores conhecimentos, de fazer uma instalação "standalone" do servidor Web, como o Apache ou IIS, do interpretador PHP e do MySQL. Uma boa pesquisa na Internet vai complementar esses conhecimentos que fogem ao nosso escopo.
 
@@ -66,7 +66,7 @@ Existe ainda a possibilidade, necessitando de maiores conhecimentos, de fazer um
 
 ### Preparando o setup de desenvolvimento
 
-Como vimos acima, vamos usar o XAMPP, portanto, nosso servidor Web de desenvolvimento será o Apache. Para facilitar o desenvolvimento sem interferir em outros sites que estão em funcionamento no Apache, vamos ativar o recurso de *Wildcards*. Este passo é opcional, mas ajudará a evitar erros de caminho (path) durante o desenvolvimento, além de permitir a "convivência" com outros sites hospedados no Apache local.
+Como vimos acima, vamos usar o XAMPP, portanto, nosso servidor Web de desenvolvimento será o Apache. Para facilitar o desenvolvimento sem interferir em outros aplicativos Web que estão em funcionamento no Apache, vamos ativar o recurso de *Wildcards*. Este passo é opcional, mas ajudará a evitar erros de caminho (path) durante o desenvolvimento, além de permitir a "convivência" com outros aplicativos Web hospedados no Apache local.
 
 A própria documentação do XAMPP ensina a configurar o uso de wildcards no Apache, mas publiquei recentemente um artigo sobre o assunto no meu blog.
 
