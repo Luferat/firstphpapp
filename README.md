@@ -49,4 +49,4 @@ Nas próximas atividades, vamos exibir um artigo completo. Críticas, sugestões
 
 Boas codificações...
 
-← [Atividade 9](https://github.com/Luferat/firstphpapp/tree/Atividade_009) │ **Atividade 10** │ [Atividade 11](https://github.com/Luferat/firstphpapp/tree/Atividade_011) →
+← [Atividade 9](https://github.com/Luferat/firstphpapp/tree/Atividade_09) │ **Atividade 10** │ [Atividade 11](https://github.com/Luferat/firstphpapp/tree/Atividade_11) →
