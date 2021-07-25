@@ -22,22 +22,47 @@ $title = 'Artigos';
 ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
 //////////////////////////////////////////////////////////////
 
-// Título da página no HTML (<h2>...</h2>)
-$article = <<<HTML
+// Obtém o id da categoria
+$catid = (isset($_GET['c'])) ? intval($_GET['c']) : 0;
 
-<h2>Artigos</h2>
-<div class="art-list">
+// Obtém categoria conforme o id
+$res = $conn->query("SELECT * FROM categories WHERE cat_id = '{$catid}';");
 
-HTML;
+if ($catid > 0 and $res->num_rows == 1) :
+
+    // Se a categoria existe, obtém dados dela em $cat
+    $cat = $res->fetch_assoc();
+
+    // Prepara o trecho de SQL para obtér artigos nesta categoria
+    $inner_join = "INNER JOIN art_cat ON article = art_id";
+    $where_category = "AND category = '{$catid}'";
+else :
+
+    // Se categoria não existe ou está listando todos os artigos
+    $catid = 0;
+    $inner_join = "";
+    $where_category = "";
+endif;
+
+// Formatando título da página no HTML (<h2>...</h2>)
+if ($catid == 0) :
+    $article = "<h2>Artigos Recentes</h2><small class=\"block text-right\">Artigos mais recentes aparecem primeiro.</small><div class=\"art-list\">";
+    $title = 'Artigos Recentes';
+else :
+    $article = "<h2>Artigos Recentes em \"{$cat['cat_name']}\"</h2><small class=\"block text-right\">Artigos mais recentes aparecem primeiro.</small><div class=\"art-list\">";
+    $title = "Artigos Recentes em \"{$cat['cat_name']}\"";
+endif;
 
 // Obtém lista de artigos do banco de dados (query)
 $sql = <<<SQL
 
 SELECT art_id, art_image, art_title, art_intro 
-    FROM articles
-    WHERE art_status = 'ativo'
-        AND art_date <= NOW()
-    ORDER BY art_date DESC;
+FROM `articles`
+{$inner_join}
+WHERE `art_date` <= NOW() 
+	AND `art_status` = 'ativo' 
+    {$where_category}
+ORDER BY art_date DESC
 
 SQL;
 
@@ -76,6 +101,9 @@ HTML;
     $article .= "</div>\n";
 
 endif;
+
+// Listando categorias
+$aside = '<h3>Categorias</h3>' . aside_Categories();
 
 ///////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo terminam aqui. /////

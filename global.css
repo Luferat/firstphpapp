@@ -278,6 +278,17 @@ img.flush {
   text-align: center;
 }
 
+/* Texto à direita */
+.text-right {
+  text-align: right;
+}
+
+/* Tags inline como block */
+.block {
+  display: block;
+  margin: 0.8rem 0;
+}
+
 /***** Listagem de artigos *****/
 
 .list {
@@ -315,4 +326,26 @@ img.flush {
 
 .list:hover .list-content {
   background: #eee;
+}
+
+/* Listagem de categorias na aside */
+.cat-list {
+  line-height: 1.7;
+  display: table;
+  margin: auto;
+}
+
+.cat-list sup {
+  display: inline-block;
+  background: rgb(124, 124, 124);
+  color: #fff;
+  padding: 0 0.3rem;
+  border-radius: 50%;
+  font-size: 0.6rem;
+}
+
+.dotted-up {
+  border-top: 1px dotted grey;
+  margin-top: 0.5rem;
+  padding-top: 0.3rem;
 }

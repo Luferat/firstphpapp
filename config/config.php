@@ -16,9 +16,9 @@ $title = $css = $js = $meta_tags = $page_css = $page_js = '';
 
 // Faz conexão com MySQL/MariaDB
 // Os dados da conexão estão em "theme/config.ini"
-$i = parse_ini_file($_SERVER['DOCUMENT_ROOT'].'/config/config.ini', true);
+$i = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/config/config.ini', true);
 foreach ($i as $k => $v) :
-    if ($_SERVER['SERVER_NAME'] == $k):
+    if ($_SERVER['SERVER_NAME'] == $k) :
 
         // Conexão com MySQL/MariaDB usando "mysqli" (orientada a objetos)
         @$conn = new mysqli($v['server'], $v['user'], $v['password'], $v['database']);
@@ -53,7 +53,7 @@ $C = array(
         'copyright' => 'Seu nome',
         'description' => 'Aplicativo modelo para desenvolvimento de aplicativos Web full stack com PHP.',
         'keywords' => 'HTML, CSS, JavaScript, PHP, MySQL, aplicativo, Web, fullstack, back-end, front-end, dinâmico, flexbox',
-    ) 
+    )
 );
 
 // Lê configurações do tema da tabela "config" do banco de dados
@@ -76,3 +76,65 @@ while ($data = $res->fetch_assoc()) :
 endwhile;
 
 // print_r($C); exit;
+
+// Lista as categorias de artigos
+// Se $count for true (default), exibe a quantidade de artigos na categoria
+function aside_Categories($count = true)
+{
+
+    // Conexão com banco de dados
+    global $conn;
+
+    // Obtém todas as categorias ordenando pelo nome e armazena resultados em $res
+    $res = $conn->query("SELECT * FROM `categories` ORDER BY cat_name");
+
+    // Inicializa a view e o total de artigos por categoria
+    $categories = '<div class="cat-list">';
+    $total = '';
+
+    // Itera as categorias e armazena cada uma em $cat
+    while ($cat = $res->fetch_assoc()) :
+
+        // Se setou exibição do contador
+        if ($count) :
+
+            // Conta quantos artigos temos na categoria, usando a tabela art_cat de ligação
+            $sql2 = "SELECT COUNT(art_cat_id) FROM art_cat WHERE category = '{$cat['cat_id']}'";
+            $res2 = $conn->query($sql2);
+
+            // Formata a view do contador
+            $total = '<sup>' . $res2->fetch_array()[0] . '</sup>';
+        endif;
+
+        // Formata a view da listagem com link para a categoria
+        $categories .= <<<HTML
+
+<div>
+    <a href="/articles/?c={$cat['cat_id']}">{$cat['cat_name']}</a> {$total}
+</div>
+
+HTML;
+
+    endwhile;
+
+    // Reinicia view do contador
+    $total = '';
+
+    // Se setou exibição do contador    
+    if ($count) :
+
+        // Conta quantos artigos temos cadastrados e ativos
+        $sql = "SELECT COUNT(art_id) FROM articles WHERE art_status = 'ativo'";
+        $res = $conn->query($sql);
+
+        // Formata view do contador
+        $total = '<sup>' . $res->fetch_array()[0] . '</sup>';
+
+    endif;
+
+    // Formata link para listar todos os artigos
+    $categories .= '<div class="dotted-up"><a href="/articles\">Todos os artigos</a> ' . $total . '</div>' . "\n";
+
+    // Retorno da função
+    return $categories;
+}
