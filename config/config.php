@@ -19,6 +19,6 @@ $C = array(
     'appSlogan' => 'Primeiros passos no PHP', // Slogan do aplicativo
     'appYear' => '2021', // Ano inicial do copyright
     'appOwner' => 'Seu Nome', // Proprietário do copyright
-    'backgroundColor' => '#ffffff', // Cor de fundo do aplicativo
+    'backgroundColor' => 'rgb(113, 34, 43)', // Cor de fundo do aplicativo
     'backgroundImage' => '/img/background02.jpg'
 );

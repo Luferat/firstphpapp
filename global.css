@@ -57,12 +57,12 @@ Define o fundo (background) do aplicativo.
 */
 
 body {
-  background-color: rgb(113, 34, 43);
+  /* background-color: rgb(113, 34, 43); */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-image: url("/img/background02.jpg");
+  /* background-image: url("/img/background02.jpg"); */
 }
 
 /*

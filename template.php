@@ -11,7 +11,7 @@
 define('PATH', $_SERVER['DOCUMENT_ROOT']);
 
 // Importa arquivo de configuração da página
-require_once(__DIR__ . '/config/config.php');
+require_once(PATH . '/config/config.php');
 
 // Define o(s) ano(s) na mensagem de copyright
 if (intval(date('Y')) > intval($C['appYear']))
