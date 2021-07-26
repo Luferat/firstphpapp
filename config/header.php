@@ -17,7 +17,7 @@ else
 
 // Pesquisa e processa CSS adicional da página 'index.css'
 // Se exite um arquivo "index.css" no mesmo local da página
-if (file_exists('index.css'))
+if (file_exists('./index.css'))
     $page_css = '<link rel="stylesheet" href="index.css">' . "\n";
 
 // Processa JavaScript adicional da página
@@ -43,6 +43,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/global.css">
+    <?= $page_css ?>
     <style>
         /* Define o background da página */
         body {
