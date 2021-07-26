@@ -7,9 +7,9 @@
 
 ## Atividade 6 - O banco de dados
 
-Nesta atividade, vamos modelar o banco de dados que vai suportar o aplicativo Web. Como sabemos, usaremos MySQL e conceitos bem básicos de tabelas, nada muito sofisticado. A modelagem pode ser vista [aqui](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_06/img/firstsite_database.png).
+Nesta atividade, vamos modelar o banco de dados que vai suportar o aplicativo Web. Como sabemos, usaremos MySQL e conceitos bem básicos de tabelas, nada muito sofisticado. A modelagem pode ser vista [aqui](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_06/img/firstphpapp_database.png).
 
-![Modelagem do banco de dados](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_06/img/firstsite_database.png)
+![Modelagem do banco de dados](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_06/img/firstphpapp_database.png)
 
 
 Temos 6 tabelas, até o momento:
