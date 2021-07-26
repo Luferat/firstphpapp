@@ -62,7 +62,7 @@ while ($data = $res->fetch_assoc()) :
 
 endwhile;
 
-print_r($C); exit;
+// print_r($C); exit;
 
 // Lista as categorias de artigos
 // Se $count for true (default), exibe a quantidade de artigos na categoria

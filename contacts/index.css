@@ -1,0 +1,17 @@
+/** index.css
+ * Folhas de estilo de contatos
+ */
+
+.social-list {
+    display: table;
+    margin: auto;
+    line-height: 2;
+}
+
+.social-list a {
+  display: block;
+}
+
+.social-list i {
+    font-size: 1.2rem;
+}

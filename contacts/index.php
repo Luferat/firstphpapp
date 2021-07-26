@@ -16,15 +16,43 @@ require_once(PATH . '/config/config.php');
 ///// Título da página /////
 // Se vazio, teremos <title>Nome do aplicativo .:. Slogan do aplicativo</title>
 // Se definido, teremos <title>Nome do aplicativo .:. $title</title>
-$title = 'Página Modelo';
+$title = 'Faça Contato';
 
 //////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
 //////////////////////////////////////////////////////////////
 
-// Conteúdo principal da página (EXEMPLO)
-$article = '';
-$aside = '';
+// Cabeçalho da sidebar
+$aside = <<<HTML
+
+<h3>+Contatos</h3>
+<p>Você também pode entrar em contato conosco pelas redes sociais.</p>
+<div class="social-list">
+
+HTML;
+
+// Ordena array pela chave
+ksort($C['social']);
+
+// Itera redes sociais em $C
+foreach ($C['social'] as $key => $value) :
+
+    // Formata nome da rede social
+    $ucf_social = ucfirst($key);
+
+    // Lista rede social
+    $aside .= <<<HTML
+
+<a href="{$value}" target="_blank">
+    <i class="fab fa-{$key} fa-fw"></i> {$ucf_social}
+</a>
+
+HTML;
+
+endforeach;
+
+// Fecha bloco com lista de redes sociais
+$aside .= '</div>';
 
 ///////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo terminam aqui. /////
