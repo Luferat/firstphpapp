@@ -15,7 +15,7 @@ $article = $aside = '';
 $title = $css = $js = $meta_tags = $page_css = $page_js = '';
 
 // Faz conexão com MySQL/MariaDB
-// Os dados da conexão estão em "theme/config.ini"
+// Os dados da conexão estão em "config/config.ini"
 $i = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/config/config.ini', true);
 foreach ($i as $k => $v) :
     if ($_SERVER['SERVER_NAME'] == $k) :
