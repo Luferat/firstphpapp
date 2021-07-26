@@ -10,7 +10,7 @@ Já podemos ver o artigo completo na seção "view". Vamos concluir essa página
 
 Na tabela "author" do banco de dados já temos algumas informações sobre o autor que vamos exibir como a imagem, o nome e o link dele.
 
-Abra "view/index.php" no editor e, formate o HTML/CSS de "view/index.php", conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_12/view/index.php) onde, formatamos os dados do autor na variável `$aside`, obtidos do SQL do artigo, usando PHP/HTML.
+Abra "view/index.php" no editor e, formate o HTML/CSS, conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_12/view/index.php) onde, formatamos os dados do autor na variável `$aside`, obtidos do SQL do artigo, usando PHP/HTML.
 
 Na sequência, com o SQL abaixo, obtemos uma lista com até 4 artigos aleatórios, deste mesmo autor. Usamos RAND() e LIMIT para isso:
 
