@@ -46,7 +46,7 @@ while ($data = $res->fetch_assoc()) :
 
     if (substr($data['var'], 0, 7) == 'social_') :
         
-        // Obtém lista de redes sociais
+        // Obtém lista de links das redes sociais
         $var = str_ireplace('social_', '', $data['var']);
         $C['social'][$var] = $data['val'];
     elseif (substr($data['var'], 0, 5) == 'meta_') :
