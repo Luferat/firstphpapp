@@ -44,7 +44,12 @@ $res = $conn->query("SELECT * FROM config");
 // Gera array de configuração do tema ($C)
 while ($data = $res->fetch_assoc()) :
 
-    if (substr($data['var'], 0, 5) == 'meta_') :
+    if (substr($data['var'], 0, 7) == 'social_') :
+        
+        // Obtém lista de redes sociais
+        $var = str_ireplace('social_', '', $data['var']);
+        $C['social'][$var] = $data['val'];
+    elseif (substr($data['var'], 0, 5) == 'meta_') :
 
         // Obtém lista de meta tags (Atributo "name")
         $var = str_ireplace('meta_', '', $data['var']);
@@ -57,7 +62,7 @@ while ($data = $res->fetch_assoc()) :
 
 endwhile;
 
-// print_r($C); exit;
+print_r($C); exit;
 
 // Lista as categorias de artigos
 // Se $count for true (default), exibe a quantidade de artigos na categoria
