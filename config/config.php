@@ -110,7 +110,7 @@ function aside_Categories($count = true)
         $categories .= <<<HTML
 
 <div>
-    <a href="/articles/?c={$cat['cat_id']}">{$cat['cat_name']}</a> {$total}
+    <a href="/?c={$cat['cat_id']}">{$cat['cat_name']}</a> {$total}
 </div>
 
 HTML;
@@ -133,7 +133,7 @@ HTML;
     endif;
 
     // Formata link para listar todos os artigos
-    $categories .= '<div class="dotted-up"><a href="/articles\">Todos os artigos</a> ' . $total . '</div>' . "\n";
+    $categories .= '<div class="dotted-up"><a href="/">Todos os artigos</a> ' . $total . '</div>' . "\n";
 
     // Retorno da função
     return $categories;
