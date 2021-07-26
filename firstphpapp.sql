@@ -31,7 +31,11 @@ INSERT INTO config (var, val) VALUES
     ('meta_author', 'Seu nome'),
     ('meta_copyright', 'Seu nome'),
     ('meta_description', 'Site modelo para desenvolvimento de aplicativos Web full stack com PHP.'),
-    ('meta_keywords', 'HTML, CSS, JavaScript, PHP, MySQL, aplicativo, Web, fullstack, back-end, front-end, dinâmico, flexbox')
+    ('meta_keywords', 'HTML, CSS, JavaScript, PHP, MySQL, aplicativo, Web, fullstack, back-end, front-end, dinâmico, flexbox'),
+    ('social_facebook', 'https://facebook.com/seunome'),
+    ('social_github', 'https://github.com/seunome'),
+    ('social_instagram', 'https://instagram.com/seunome'),
+    ('social_linkedin', 'https://linkedin.com/seunome')
 ;
 
 -- Cria tabela para formulário de contatos
