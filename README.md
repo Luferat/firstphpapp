@@ -21,7 +21,7 @@ Na sequência, com o SQL abaixo, obtemos uma lista com até 4 artigos aleatório
 	ORDER BY RAND()
 	LIMIT 4
 
-Se encontramos artigos, exibimos logo abaixo os dados do autor, na barra lateral.
+Se encontramos artigos, exibimos logo abaixo dos dados do autor, na barra lateral.
 
 Para completar a atividade, incluímos as classes necessárias em "view/indes.css", conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_12/view/index.css).
 
