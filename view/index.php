@@ -85,47 +85,6 @@ while ($cat = $res->fetch_assoc())
 // Fecha o bloco com a lista de categorias    
 $article = substr($article, 0, -2) . '.</div>';
 
-// Formata aside com dados do autor do artigo
-$aside = <<<HTML
-
-<h3>Autor</h3>
-<img class="author-image" src="{$art['aut_image']}" alt="{$art['aut_name']}">
-<h4>{$art['aut_name']}</h4>
-{$art['aut_description']}
-<div class="author-link">
-    <a href="{$art['aut_link']}" target="_blank">Link do autor</a>
-</div>
-
-HTML;
-
-// Obtém uma lista com até 4 artigos aleatórios deste mesmo autor.
-$sql = <<<SQL
-
-SELECT `art_id`, `art_image`, `art_title` FROM `articles` 
-WHERE art_author = '{$art['art_author']}'
-	AND art_date <= NOW()
-    AND art_status = 'ativo'
-ORDER BY RAND()
-LIMIT 4
-
-SQL;
-
-// Armazena resultados em $res
-$res = $conn->query($sql);
-
-// Se este autor tem mais artigos além desse, lista-os como sugestão na view
-if ($res->num_rows > 0) :
-
-    $aside .= '<h3>+Artigos do Autor</h3><div class="aside-list">';
-
-    // Itera cada artigo obtido
-    while ($aart = $res->fetch_assoc())
-        $aside .= '<a href="/view/?' . $aart['art_id'] . '">' . $aart['art_title'] . '</a>' . "\n";
-
-    $aside .= '</div>';
-
-endif;
-
 ///////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo terminam aqui. /////
 ///////////////////////////////////////////////////////////////
