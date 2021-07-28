@@ -45,7 +45,7 @@ $res = $conn->query("SELECT * FROM config");
 while ($data = $res->fetch_assoc()) :
 
     if (substr($data['var'], 0, 7) == 'social_') :
-        
+
         // Obtém lista de links das redes sociais
         $var = str_ireplace('social_', '', $data['var']);
         $C['social'][$var] = $data['val'];
@@ -124,4 +124,33 @@ HTML;
 
     // Retorno da função
     return $categories;
+}
+
+// Sanitiza campos de formulários usando mehod="POST"
+// Outros filtros podem ser implementados nesta função
+function post_clean($post_field, $type = 'string')
+{
+
+    // Escolhe o tipo de filtro
+    switch ($type):
+        case 'string':
+
+            // Satiziza strings
+            $post_value = filter_input(INPUT_POST, $post_field, FILTER_SANITIZE_STRING);
+            break;
+        case 'email':
+
+            // SAnitiza endereços de e-mail
+            $post_value = filter_input(INPUT_POST, $post_field, FILTER_SANITIZE_EMAIL);
+            break;
+    endswitch;
+
+    // Remove excesso de espaços
+    $post_value = trim($post_value);
+
+    // Remove aspas perigosas
+    $post_value = stripslashes($post_value);
+
+    // Retorna valor do campo sanitizado
+    return $post_value;
 }
