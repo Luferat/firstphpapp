@@ -135,7 +135,7 @@ function post_clean($post_field, $type = 'string')
     switch ($type):
         case 'string':
 
-            // Satiziza strings
+            // Sanitiza strings
             $post_value = filter_input(INPUT_POST, $post_field, FILTER_SANITIZE_STRING);
             break;
         case 'email':

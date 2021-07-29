@@ -6,7 +6,7 @@
 
 ## Atividade 15 - Processando o formulário
 
-Vamos, essa atividade, processar os dados enviados pelo formulário de contatos. Basicamente, vamos validar e sanitizar os dados, enviar para o banco de dados e também enviar por e-mail para o proprietário/administrador do aplicativo.
+Vamos, nessa atividade, processar os dados enviados pelo formulário de contatos. Basicamente, vamos validar e sanitizar os dados, enviar para o banco de dados e também enviar por e-mail para o proprietário/administrador do aplicativo.
 
 Precisamos do e-mail do proprietário/administrador do aplicativo para que possamos enviar o contato recebido para ele. Edite "firstphpsite.sql" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_15/firstphpapp.sql), para adicionar na tabela `config` a chave `appOwnerEmail` e seu valor.
 
@@ -19,13 +19,13 @@ Precisamos do e-mail do proprietário/administrador do aplicativo para que possa
 		•••
 	;
 
-Abra o PHPMyAdmin (http://localhost/phpmyadmin) no navegador, à até a guia SQL, cole todo o conteúdo de "firstphpsite.sql" lá e clique em [Executar].
+Abra o PHPMyAdmin (http://localhost/phpmyadmin) no navegador, vá até a guia SQL, cole todo o conteúdo de "firstphpsite.sql" lá e clique em [Executar].
 
 > *Já sabemos que este arquivo "firstphpsite.sql" é destrutivo, então, não tem problemas em colar ele inteiro...*
 
 Edite então "contacts/index.php" para inserir os códigos de processamento do formulário, conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_15/contacts/index.php).
 
-Primeiro, recebemos os dados dos campos e armazenamos em variáveis. Por questões de segurança, vamos sanitizar esses dados em uma função `post_clean()` que vamos criar em "config/config.php" daqui a pouco.
+Primeiro, recebemos os dados dos campos e os armazenamos em variáveis. Por questões de segurança, vamos sanitizar esses dados em uma função `post_clean()` que vamos criar em "config/config.php" daqui a pouco.
 
 Caso esteja tudo ok, criamos um *feedback* para o usuário, salvamos os dados no banco de dados, enviamos e-mail para o proprietário do aplicativo e exibimos o *feedback* criado.
 
@@ -44,3 +44,4 @@ Está gostando? Achou algum *bug*? Tem sugestões? Então, contribua [clicando a
 Até a próxima atividade...
 
 ← [Atividade 14](https://github.com/Luferat/firstphpapp/tree/Atividade_14) │ **Atividade 15** │ [Atividade 16](https://github.com/Luferat/firstphpapp/tree/Atividade_16) →
+
