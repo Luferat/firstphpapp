@@ -26,6 +26,7 @@ INSERT INTO config (var, val) VALUES
     ('appSlogan', 'Primeiros passos no PHP'),
     ('appYear', '2021'),
     ('appOwner', 'Seu Nome'),
+    ('appOwnerEmail', 'contato@firstphpsite.tk'),
     ('backgroundColor', '#ffffff'),
     ('backgroundImage', '/img/background02.jpg'),
     ('meta_author', 'Seu nome'),
