@@ -26,9 +26,9 @@ $title = 'Faça Contato';
 $contact_error = '';
 
 // Formulário HTML
-$contact_form .= <<<HTML
+$contact_form = <<<HTML
 
-<form method="post" id="contact" action="/contacts">
+<form method="post" id="contact" action="/contacts/index.php">
 
     <input type="hidden" name="contact_send" value="true">
 
@@ -66,14 +66,13 @@ HTML;
 // Processa envio do formulário
 if (isset($_POST['contact_send'])) :
 
-
     // Recebe e sanitiza os campos usando a função post_clean() que está em config/config.php
     $name = post_clean('name', 'string');
     $email = post_clean('email', 'email');
     $subject = post_clean('subject', 'string');
     $message = post_clean('message', 'string');
 
-    // Detecta campos vazios (não aprovados na sanitização)
+    // Detecta campos vazios (ou, não aprovados na sanitização)
     if ($name == '' or $email == '' or $subject == '' or $message == '') :
         $contact_error = <<<HTML
 
@@ -95,24 +94,43 @@ HTML;
 
         // Salva contato no banco de dados usando Prepared Query
         $sql = "INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?);";
-        $stmt = $mysqli->prepare($sql);
+        $stmt = $conn->prepare($sql);
+
+        // Obtém dados dos campos
         $stmt->bind_param("ssss", $name, $email, $subject, $message);
+
+        // Executa a query
         $stmt->execute();
-        
+
+        // Transforma o nome em um array para obter só o primeiro nome ($names[0])
         $names = explode(' ', $name);
+
+        // Feedback para usuário
         $article = <<<HTML
 
-<strong>Olá {$names[0]}!</strong>
-<p>Seu contato foi enviado para a equipe do {$C['siteName']}.</p>
-<em>Obrigado!</em>
-<p class="text-center">
-    <a href="/"><i class="fas fa-fw fa-home"></i> Página inicial</a>
-</p>
+<div class="feedback_ok">
+    <strong>Olá {$names[0]}!</strong>
+    <p>Seu contato foi enviado para a equipe do {$C['appTitle']}.</p>
+    <em>Obrigado!</em>
+    <p class="center">
+        <a href="/"><i class="fas fa-fw fa-home"></i> Página inicial</a>
+    </p>
+</div>
 
 HTML;
 
     endif;
 
+else :
+
+    // Exibe formulário de contatos
+    $article .= <<<HTML
+
+<h2>Faça contato</h2>
+<p>Preencha os campos abaixo para entrar em contato com '{$C['appTitle']}'.</p>
+{$contact_form}    
+
+HTML;
 
 endif;
 

@@ -85,7 +85,17 @@
   font-style: italic;
 }
 
-#feedback {
+.feedback_ok {
   display: table;
   margin: auto;
+}
+
+.feedback_error {
+  display: table;
+  margin: auto;
+  background: rgb(255, 210, 210);
+  border: 1px dotted red;
+  padding: 1rem 1rem 0 1rem;
+  border-radius: .5rem;
+  color: rgb(34, 0, 0);
 }

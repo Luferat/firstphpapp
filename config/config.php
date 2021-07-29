@@ -126,7 +126,7 @@ HTML;
     return $categories;
 }
 
-// Sanitiza campos de formulários usando mehod="POST"
+// Sanitiza campos de formulários usando method="POST"
 // Outros filtros podem ser implementados nesta função
 function post_clean($post_field, $type = 'string')
 {
@@ -140,7 +140,7 @@ function post_clean($post_field, $type = 'string')
             break;
         case 'email':
 
-            // SAnitiza endereços de e-mail
+            // Satiziza endereços de e-mail
             $post_value = filter_input(INPUT_POST, $post_field, FILTER_SANITIZE_EMAIL);
             break;
     endswitch;
