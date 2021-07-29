@@ -25,7 +25,7 @@ $title = 'Faça Contato';
 // Inicializa variáveis do script
 $contact_error = '';
 
-// Formulário HTML
+// TEmplate do formulário HTML
 $contact_form = <<<HTML
 
 <form method="post" id="contact" action="/contacts/index.php">
@@ -63,63 +63,10 @@ $contact_form = <<<HTML
 
 HTML;
 
-// Processa envio do formulário
 if (isset($_POST['contact_send'])) :
 
-    // Recebe e sanitiza os campos usando a função post_clean() que está em config/config.php
-    $name = post_clean('name', 'string');
-    $email = post_clean('email', 'email');
-    $subject = post_clean('subject', 'string');
-    $message = post_clean('message', 'string');
-
-    // Detecta campos vazios (ou, não aprovados na sanitização)
-    if ($name == '' or $email == '' or $subject == '' or $message == '') :
-        $contact_error = <<<HTML
-
-<h2>Faça contato</h2>
-<p>Preencha os campos abaixo para entrar em contato conosco.</p>
-
-<div class="feedback_error">
-    <strong>Olá!</strong>
-    <p>Um ou mais campos do formulário estão vazios!</p>
-    <p>Não foi possível enviar seu contato.</p>
-    <p>Por favor, preencha todos os campos e tente novamente.</p>
-</div>
-
-HTML;
-
-        $article = $contact_error . $contact_form;
-
-    else :
-
-        // Salva contato no banco de dados usando Prepared Query
-        $sql = "INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?);";
-        $stmt = $conn->prepare($sql);
-
-        // Obtém dados dos campos
-        $stmt->bind_param("ssss", $name, $email, $subject, $message);
-
-        // Executa a query
-        $stmt->execute();
-
-        // Transforma o nome em um array para obter só o primeiro nome ($names[0])
-        $names = explode(' ', $name);
-
-        // Feedback para usuário
-        $article = <<<HTML
-
-<div class="feedback_ok">
-    <strong>Olá {$names[0]}!</strong>
-    <p>Seu contato foi enviado para a equipe do {$C['appTitle']}.</p>
-    <em>Obrigado!</em>
-    <p class="center">
-        <a href="/"><i class="fas fa-fw fa-home"></i> Página inicial</a>
-    </p>
-</div>
-
-HTML;
-
-    endif;
+    // Processa envio do formulário, quando enviado
+    
 
 else :
 
@@ -133,7 +80,6 @@ else :
 HTML;
 
 endif;
-
 
 // Cabeçalho da sidebar
 $aside = <<<HTML

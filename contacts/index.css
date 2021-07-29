@@ -71,7 +71,6 @@
 }
 
 #contact:invalid button {
-  /* pointer-events: none; */
   background: rgb(165, 165, 165);
   color: rgb(221, 221, 221);
   cursor: not-allowed;
