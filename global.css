@@ -349,3 +349,37 @@ img.flush {
   margin-top: 0.5rem;
   padding-top: 0.3rem;
 }
+
+/* Formata view do artigo e do sobre */
+
+.author-date {
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: right;
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+}
+
+.categories {
+  background: rgb(200, 200, 200);
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  margin-top: 2rem;
+}
+
+.author-image {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: auto;
+}
+
+.author-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.author-list a {
+  display: block;
+  padding-bottom: 0.5rem;
+}
