@@ -10,10 +10,10 @@ Usaremos, na maior parte do tempo, o PHP procedural, com uma ou outra "pitada" d
 
 >  *Estamos preparando outro projeto que será, em sua maior parte, com PHP orientado a objetos. Este projeto começará a ser disponibilizado em breve, assim que este aqui tiver a versão 1.0 concluída.*
 
-	              ┌──────────┐     ←→╔══════════╗ 
-	              │index.php │     ←→║ database ║
-	              │(articles)│     ←→║   MySQL  ║
-	              └────┬─────┘     ←→╚══════════╝
+	              ┌──────────┐          ←→╔══════════╗ 
+	              │index.php │          ←→║ database ║
+	              │(articles)│          ←→║   MySQL  ║
+	              └────┬─────┘          ←→╚══════════╝
 	     ┌─────────────┼────────────┐      
 	┌────┴─────┐  ┌────┴─────┐  ┌───┴───┐  ←→╔═══════╗
 	│   view   │  │ contacts │  │ about │  ←→║ Theme ║
