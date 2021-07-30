@@ -1,5 +1,5 @@
 /** global.css
- * Folhas de estilos globais usadas pelo template do site.
+ * Folhas de estilos globais usadas pelo template do aplicativo.
  */
 
 /* 
@@ -53,16 +53,16 @@ p {
 
 /*
 Background
-Define o fundo (background) do site.
+Define o fundo (background) do aplicativo.
 */
 
 body {
-  background-color: rgb(113, 34, 43);
+  /* background-color: rgb(113, 34, 43); */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-image: url("/img/background02.jpg");
+  /* background-image: url("/img/background02.jpg"); */
 }
 
 /*
@@ -79,4 +79,307 @@ Limita o tamanho do conteúdo e centraliza a página em telas maiores.
   margin: auto;
   display: flex;
   flex-direction: column;
+}
+
+/*
+Quadro principal
+Limita o tamanho do conteúdo e centraliza a página em telas maiores.
+*/
+
+.wrap {
+  position: relative;
+  width: 100%;
+  min-width: 280px;
+  max-width: 1024px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+Cabeçalho <header>
+*/
+
+header {
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  display: block;
+  width: 4rem;
+  margin: 0.25rem;
+}
+
+header h1 {
+  margin: 0 0 0 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+header h1 small {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: normal;
+  letter-spacing: 0.15rem;
+  color: grey;
+}
+
+/* Menu <nav> */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 1);
+  border-top: 1px dotted rgba(0, 0, 0, 1);
+  border-bottom: 1px dotted rgba(0, 0, 0, 1);
+}
+
+nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.9rem;
+}
+
+nav a:first-child {
+  margin-right: auto;
+}
+
+nav a:hover {
+  color: rgb(255, 255, 0);
+  text-decoration: none;
+}
+
+nav a i {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.active {
+  color: rgb(255, 166, 0);
+}
+
+@media (min-width: 576px) {
+  nav a {
+    flex-direction: row;
+  }
+  nav a i {
+    font-size: 1rem;
+    margin-bottom: 0;
+    margin-right: 0.5rem;
+  }
+}
+
+/*
+  Conteúdo central <main>
+  Força o rodapé <footer> para o final da viewport.
+  */
+
+main {
+  flex-grow: 1;
+  background: #fff;
+}
+
+/* Rodape <footer> */
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(16, 16, 16, 0.9);
+  color: rgba(255, 255, 255, 1);
+  border-top: 1px dotted rgba(16, 16, 16, 0.9);
+  border-bottom: 1px dotted rgba(16, 16, 16, 0.9);
+}
+
+footer a {
+  padding: 0.25rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+footer a:hover {
+  color: #000;
+  background: #ccc;
+  text-decoration: none;
+}
+
+footer div {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Conteúdo central <main>, <article> e <aside> */
+
+main {
+  display: flex;
+  flex-direction: column;
+  /* height: 100%; */
+}
+
+article,
+aside {
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+article {
+  flex-grow: 1;
+}
+
+aside {
+  border-top: 3px dotted grey;
+}
+
+article h2:first-child {
+  margin: -1rem -1rem 1rem -1rem;
+  padding: 1rem;
+  background: #ddd;
+}
+
+aside h3 {
+  margin: 1rem -1rem 1rem -1rem;
+  padding: 1rem;
+  background: #ddd;
+}
+
+aside h3:first-child {
+  margin-top: -1rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    flex-direction: row;
+  }
+
+  aside {
+    min-width: 200px;
+    max-width: 200px;
+    border: none;
+    border-left: 3px dotted grey;
+  }
+}
+
+/***** Estilos de uso geral *****/
+
+/* Imagens responsivas */
+img.flush {
+  max-width: 100%;
+}
+
+/* Texto centralizado */
+.center {
+  text-align: center;
+}
+
+/* Texto à direita */
+.text-right {
+  text-align: right;
+}
+
+/* Tags inline como block */
+.block {
+  display: block;
+  margin: 0.8rem 0;
+}
+
+/***** Listagem de artigos *****/
+
+.list {
+  display: flex;
+  cursor: pointer;
+  padding: 0 0 1rem 0;
+}
+
+.list:last-child {
+  padding: 0;
+}
+
+.list-img {
+  min-width: 100px;
+  min-height: 100px;
+  border-radius: 0.5rem 0 0 0.5rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.list-content {
+  background: #fff;
+  flex-grow: 1;
+  padding: 1rem;
+  border: 1px dotted grey;
+  border-left: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.list-title {
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+.list:hover .list-content {
+  background: #eee;
+}
+
+/* Listagem de categorias na aside */
+.cat-list {
+  line-height: 1.7;
+  display: table;
+  margin: auto;
+}
+
+.cat-list sup {
+  display: inline-block;
+  background: rgb(124, 124, 124);
+  color: #fff;
+  padding: 0 0.3rem;
+  border-radius: 50%;
+  font-size: 0.6rem;
+}
+
+.dotted-up {
+  border-top: 1px dotted grey;
+  margin-top: 0.5rem;
+  padding-top: 0.3rem;
+}
+
+/* Formata view do artigo e do sobre */
+
+.author-date {
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: right;
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+}
+
+.categories {
+  background: rgb(200, 200, 200);
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  margin-top: 2rem;
+}
+
+.author-image {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: auto;
+}
+
+.author-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.author-list a {
+  display: block;
+  padding-bottom: 0.5rem;
 }

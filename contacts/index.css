@@ -1,0 +1,100 @@
+/** index.css
+ * Folhas de estilo de contatos
+ */
+
+.social-list {
+  display: table;
+  margin: auto;
+  line-height: 2;
+}
+
+.social-list a {
+  display: block;
+}
+
+.social-list i {
+  font-size: 1.2rem;
+}
+
+#contact {
+  display: block;
+}
+
+#contact label {
+  display: block;
+  padding: 0 0 0.3rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+#contact input,
+#contact textarea,
+#contact button {
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+#contact input,
+#contact textarea {
+  width: 100%;
+}
+
+#contact textarea {
+  height: 6rem;
+  resize: vertical;
+}
+
+#contact button {
+  color: #fff;
+  background: #000;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+#contact button:hover {
+  color: #000;
+  background: #fff;
+}
+
+#contact input:invalid,
+#contact textarea:invalid {
+  background: rgb(255, 207, 207);
+  border-bottom: 3px solid red;
+}
+
+#contact input:valid,
+#contact textarea:valid {
+  background: rgb(213, 255, 213);
+  border-bottom: 3px solid green;
+}
+
+#contact:invalid button {
+  background: rgb(165, 165, 165);
+  color: rgb(221, 221, 221);
+  cursor: not-allowed;
+  border: 1px solid transparent;
+}
+
+.advise {
+  font-size: 0.75rem;
+  text-align: center;
+  color: red;
+  font-style: italic;
+}
+
+.feedback_ok {
+  display: table;
+  margin: auto;
+}
+
+.feedback_error {
+  display: table;
+  margin: auto;
+  background: rgb(255, 210, 210);
+  border: 1px dotted red;
+  padding: 1rem 1rem 0 1rem;
+  border-radius: .5rem;
+  color: rgb(34, 0, 0);
+}

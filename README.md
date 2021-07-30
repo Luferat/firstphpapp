@@ -1,93 +1,82 @@
+
 # First PHP App
 
 **Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
 
-Vamos, neste projeto, criar um aplicativo Web (site de Internet) full stack, ou seja, front-end e back-end, usando as linguagens de computador citadas acima. Será um aplicativo pequeno, minimalista, mas totalmente funcional e com espaço para muitas implementações novas.
+*Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
 
->  *Se você é **profissional da área** ou um **estudante avançado**, este projeto **não serve para você**, porque aborda os conceitos mais simples do desenvolvimento Web usando PHP, com foco na criação de um produto mais simples possível.*
+## Atividade 16 - Seção sobre...
 
-Usaremos, na maior parte do tempo, o PHP procedural, com uma ou outra "pitada" de orientação à objetos.
+Uma sugestão para a seção "Sobre" do aplicativo Web? Desenvolva-a sozinho(a), sem a ajuda desta atividade. Será um exercício e tanto e você pode desenvolvê-la do jeito que quiser. Sugiro que esta seção tenha pelo menos 4 páginas:
 
->  *Estamos preparando outro projeto que será, em sua maior parte, com PHP orientado a objetos. Este projeto começará a ser disponibilizado em breve, assim que este aqui tiver a versão 1.0 concluída.*
+- **Sobre o site** → Onde os visitantes obtêm mais informações sobre o aplicativo, como seus objetivos e até informações mais técnicas como plataformas...
 
-	              ┌──────────┐          ←→╔══════════╗ 
-	              │index.php │          ←→║ database ║
-	              │(articles)│          ←→║   MySQL  ║
-	              └────┬─────┘          ←→╚══════════╝
-	     ┌─────────────┼────────────┐      
-	┌────┴─────┐  ┌────┴─────┐  ┌───┴───┐  ←→╔═══════╗
-	│   view   │  │ contacts │  │ about │  ←→║ Theme ║
-	└──────────┘  └──────────┘  └───────┘  ←→╚═══════╝
+- **Quem faz** → Onde os visitantes obtêm mais informações sobre o proprietário, desenvolvedor, mantenedor, etc. 
 
-## Por que PHP
+- **Sobre a privacidade** → Atendendo aos requisitos da legislação vigente, apresentamos o contrato de privacidade do aplicativo aqui.
 
-Atualmente na versão 8, o PHP é uma linguagem moderna, atualizada, de código aberto, gratuita e com todos os conceitos e recursos necessários ao desenvolvimento de um aplicativo Web poderoso. É extremamente leve, consumindo poucos recursos de máquina e muito fácil de aprender, porque tem uma sintaxe simples, sem frescuras. Além disso, é extremamente fácil hospedar aplicativos em PHP na Internet, inclusive em provedores de hospedagem gratuita, coisa que pode ser literalmente impossível com outras linguagens de back-end.
+- **Sobre os Cookies** → Essa página complementa a anterior, explicando o que são os cookies que o usuário deve aceitar para navegar no aplicativo.
 
->  *Já tentou alguma vez hospedar um aplicativo Web em Python ou mesmo Java? Gratuito ainda por cima? Vai... Tenta...*
+A sugestão é que você desenvolva algo dinâmico, usando o banco de dados do aplicativo, seja aproveitando a estrutura existente ou criando uma nova. Não existe fórmula, na verdade, temos várias formas de fazer essa seção...
 
-Ao contrário do que os concorrentes tentam te vender, o PHP ainda é uma linguagem totalmente aplicável, sendo usada na maioria dos CMS (Content Management System) mais usados da Web como [WordPress](https://br.wordpress.org/), [Drupal](https://www.drupal.org), [Joomla](https://www.joomla.org/) muitos outros.
+### Nosso modelo
 
-Para completar, quase 100% da documentação oficial está traduzida para o portugês do Brasil, o que pode facilitar bastante quem está começando na T.I.
+Claro que não vamos deixar ninguém na mão, então, vamos ver uma, apenas uma forma de fazer essa atividade de revisão. Neste exemplo, vamos usar a estrutura de artigos já existente, assim, não precisamos criar uma nova tabela no banco de dados.
 
-- Site oficial do PHP → https://www.php.net/
-- Documentação Oficial do PHP em português → https://www.php.net/manual/pt_BR/
+Para começar, abra "firstphpapp.sql" no editor para alterar a estrutura da tabela "articles", inserindo o código abaixo logo no final do arquivo:
 
-## Como funciona
+	-- Altera estrutura da tabela "articles" para receber a seção "Sobre"
+	ALTER TABLE `articles` CHANGE
+	`art_status` `art_status` ENUM('inativo', 'ativo', 'sobre') NOT NULL DEFAULT 'ativo';
 
-O aplicativo será desenvolvido aos poucos, em partes divididas por "Atividades", onde cada atividade já desenvolvida corresponde a um "branch" deste repositório.
+O que fizemos foi adicionar o opção "sobre" na lista do campo "art_status" (ENUM) que já contém "ativo" e "inativo".
 
-Provavelmente, se você pesquisar na lista de "branches", vai ver algumas atividades já enviadas e devidamente documentadas. Já o branch "**main**" contém a versão mais recente do aplicativo, com todas as atividades publicadas, já inseridas, ou seja, contém o produto final, juntamente com este documento que você está lendo.
+Ainda neste arquivo, vamos inserir o SQL necessário para criar os conteúdos da seção "Sobre" na tabela "articles". Só temos que ter o cuidado de adicionar o valor "sobre" no campo "art_status" na inserção. Use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_16/firstphpapp.sql) para facilitar.
 
-> *O branch **main** sempre contém os códigos da atividade mais recente, então pode ocorrer de, em algum momento, o aplicativo não funcionar corretamente com este branch.*
+Rode este script no PHPMyAdmin para recriar o banco de dados com as novas especificações.
 
-## Conhecimentos prévios
+ Com o banco de dados atualizado, abra e edite "about/index.php" usando [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_16/about/index.php).  Essa página vai listar os "artigos" disponíveis na seção "Sobre" e também exibir cada um, individualmente, ou seja, ela é uma revisão de "index.php" e "view/index.php", com uma pitadinha de "config/config.php".
 
-Será interessante, antes de iniciar este projeto, que você tenha domínio de desenvolvimento Web front-end usando HTML5, CSS3 e também alguma base de JavaScript. Um bom "lugar" para começar é o site, [W3Schools](https://www.w3schools.com/html/default.asp) que tem uma abordagem simples, minimalista e com testes práticos feitos diretamente no site. Se você prefere os caminhos diretos:
+- Começamos alterando o valor de `$title` (`$title = 'Sobre';`);
 
-- HTML5 → https://www.w3schools.com/html/
-- CSS3 → https://www.w3schools.com/css/
-- JavaScript → https://www.w3schools.com/js/
+-  Em seguida, tentamos obter o Id de um artigo e armazenar em `$aid`. Se conseguimos, vamos obter este artigo especifico no banco de dados, com a query:
 
-O site também tem ótimos tutoriais para nosso back-end:
+		SELECT * FROM articles
+		INNER JOIN authors ON aut_id = `art_author`
+		WHERE art_id = '{$aid}'
+		AND art_status = 'sobre' 
 
-- PHP → https://www.w3schools.com/php/
-- SQL → https://www.w3schools.com/sql/
-- PHP com MySQL → https://www.w3schools.com/php/php_mysql_intro.asp
+- Formatamos e exibimos o conteúdo completo no HTML;
+- Mas, se o artigo solicitado não existe ou, simplesmente não solicitou um artigo, usando a query abaixo, obtemos todos os artigos cadastrados em "Sobre" (`art_status = 'sobre'`):
 
-Obviamente, existem muitas outras fontes de pesquisa, cursos online gratuitos e pagos que podem servir de suporte para este projeto.
+      SELECT art_id, art_image, art_title, art_intro
+      FROM `articles`
+      WHERE `art_status` = 'sobre'
+      ORDER BY art_date DESC
 
-## Primeiros passos
+Formatamos a listagem e enviamos para o HTML, na variável `$article`.
 
-Para executar as atividades e testar os resultados usaremos um servidor Web local com suporte a scripts PHP e banco de dados MySQL. Existem alguns aplicativos empacotados que já configuram no computador um ambiente de servidor Web funcional para desenvolver aplicativos Web como [XAMPP](https://www.apachefriends.org/pt_br/index.html), [WAMP Server](https://www.wampserver.com/en/), [EasyPHP](https://www.easyphp.org/), [USBWebServer](https://www.usbwebserver.net/webserver/) e outros. Além das versões para Windows, alguns deles funcionam no Linux e no MacOS também.
+Na sequência, formatamos a `<aside>...</aside>` com uma lista de artigos em "Sobre" e, quando estamos exibindo um artigo único, mostramos os dados do autor também.
 
-Existe ainda a possibilidade, necessitando de maiores conhecimentos, de fazer uma instalação "standalone" do servidor Web, como o Apache ou IIS, do interpretador PHP e do MySQL. Uma boa pesquisa na Internet vai complementar esses conhecimentos que fogem ao nosso escopo.
+Precisamos melhorar a "view", editando o SQL. Para facilitar, vamos reutilizar o SQL da página "view" (view/index.css):
 
->  *Apesar do projeto funcionar em qualquer servidor Web com suporte ao PHP e um SGBD MySQL ou MariaDB, usaremos como base dos exemplos, o pacote XAMPP para Windows, cuja versão mais recente está disponível no [site oficial](https://www.apachefriends.org/pt_br/index.html).*
+- Abra "view/index.css", copie todo o seu conteúdo e cole no final de "global.css";
 
-### Preparando o setup de desenvolvimento
+- Apague "view/index.css" e pronto. O modelo finalizado de "global.css" [está aqui](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_16/global.css).
 
-Como vimos acima, vamos usar o XAMPP, portanto, nosso servidor Web de desenvolvimento será o Apache. Para facilitar o desenvolvimento sem interferir em outros aplicativos Web que estão em funcionamento no Apache, vamos ativar o recurso de *Wildcards*. Este passo é opcional, mas ajudará a evitar erros de caminho (path) durante o desenvolvimento, além de permitir a "convivência" com outros aplicativos Web hospedados no Apache local.
+Teste exaustivamente todo o site em busca de ajustes e bugs menores, uma bela vistoria nos códigos fonte, incluindo os comentários, também é boa prática, porque, sempre deixamos passar alguma coisa.
 
-A própria documentação do XAMPP ensina a configurar o uso de wildcards no Apache, mas publiquei recentemente um artigo sobre o assunto no meu blog.
+E... Nossas atividades terminam por aqui, mas, não o desenvolvimento do aplicativo. Ainda temos muito a implementar, coisas legais para fazer, novas páginas e seções... Mas isso já foge do escopo deste projeto, então, agora, pegue esses códigos, revise com calma, personalize e publique seu próprio site, com seu próprio conteúdo.
 
-- [Desenvolvendo vários sites no Apache](http://catabits.com.br/desenvolvendo-varios-sites-no-apache/)
+E não deixe de nos passar o endereço, juntamente com suas contribuições. Basta [clicar aqui](https://github.com/Luferat/firstphpapp/issues) e abrir uma issue!
 
-> *É possível ainda usar o recurso de Virtual Hosts do servidor Web, mas essa abordagem é mais trabalhosa e requer alguma intervenção no sistema operacional para cada novo aplicativo Web criado. Contraprodutivo para desenvolvedores...*
+### Sugestões de upgrade
+ - Fazer a paginação na listagem dos artigos.
+ - Criar uma mensagem de aceite de cookies usando, justamente, cookies do PHP.
+ - Criação de uma área ou mesmo de um aplicativo administrativo (dashboard) para inserção e edição do conteúdo, sem a necessidade de interagir diretamente com o banco de dados.
+ - Mais automatização do tema, explorando mais as possibilidades da tabela "config" e da array `$C`.
+ - Criar um sistema de comentários para os artigos, com autenticação de usuários e moderação.
 
-Se você ativou os *wildcards* no Apache, crie um diretório "firstphpapp" no diretório raiz do Apache (htdocs) - no XAMPP para Windows, normalmente fica como "`C:\xampp\htdocs\firstphpapp`" - e teste acessando, pelo navegador, o endereço [http://firstphpapp.localhost/](http://firstphpapp.localhost/).
+Se você quer ver algumas dessa implementações, acesse meu blog http://www.catabits.com.br.
 
-Como vamos usar o MySQL, teste também o acesso a este, juntamente com o aplicativo de gestão *PHPMyAdmin*, acessando, pelo navegador, o endereço [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
-
-Além do servidor Web previamente configurado, vamos precisar de um editor de códigos. Sugiro o [Visual Studio Code](https://code.visualstudio.com/) e não tenho mais o que dizer sobre isso!
-
-Obviamente, um navegador Web será necessário. Use o [Chrome](https://www.google.com/intl/pt-BR/chrome/)! Por que? Mais da metade do mundo usa ele e o restante usa todos os outros, então, desenvolva nele e depois, se necessário, faça ajustes para os outros. Não é questão de gosto do desenvolvedor e sim dos clientes que vão acessar seu aplicativo Web. Sem mimimi... Simples assim...
-
-## Contribuições
-
-Se você quiser participar deste projeto ou mesmo dar outro rumo para ele, não custa nada "forcar" e começar! Se preferir, abra uma [Issue](https://github.com/Luferat/FirstPHPApp/issues) e deixe sua contribuição.
-
-## Vamos começar
-
-Lembre-se que cada atividade está descrita na documentação de um branch deste repositório, assim como os arquivos de exemplo. Então, se seu setup já está ok, já escolheu seu editor de códigos favorito e já abriu o aplicativo Web no navegador, mesmo que ele esteja vazio, acesse o branch "[Atividade_01](https://github.com/Luferat/FirstPHPApp/tree/Atividade_01)" e vamos começar.
-
-**Introdução** │ [Atividade 1](https://github.com/Luferat/FirstPHPApp/tree/Atividade_01) →
+← [Atividade 15](https://github.com/Luferat/firstphpapp/tree/Atividade_15) │ **Atividade 16** 

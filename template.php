@@ -1,36 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/global.css">
-    <link rel="icon" href="/img/logo01.png">
-    <title>First PHP App</title>
-</head>
+/**
+ * template.php
+ * Página modelo para criação do tema do aplicativo.
+ * Esta página serve de modelo para todas as outras páginas do aplicativo.
+ */
 
-<body>
+// Define constante com o diretório raiz (/) do aplicativo
+// Também podemos usar a constante mágica __DIR__, se disponível no servidor
+define('PATH', $_SERVER['DOCUMENT_ROOT']);
 
-    <a id="top"></a>
+// Importa arquivo de configuração da página
+require_once(PATH . '/config/config.php');
 
-    <div class="wrap">
+///// Título da página /////
+// Se vazio, teremos <title>Nome do aplicativo .:. Slogan do aplicativo</title>
+// Se definido, teremos <title>Nome do aplicativo .:. $title</title>
+$title = 'Página Modelo';
 
-        <header></header>
+//////////////////////////////////////////////////////////////
+///// Os códigos PHP para gerar o conteúdo começam aqui. /////
+//////////////////////////////////////////////////////////////
 
-        <nav></nav>
+// Conteúdo principal da página (HTML)
+$article = '';
+$aside = '';
 
-        <main>
-            <article></article>
-            <aside></aside>
-        </main>
+///////////////////////////////////////////////////////////////
+///// Os códigos PHP para gerar o conteúdo terminam aqui. /////
+///////////////////////////////////////////////////////////////
 
-    </div>
+// Importa abertura do tema
+require_once(PATH .  '/config/header.php');
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/global.js"></script>
+?>
 
-</body>
+<article><?= $article ?></article>
+<aside><?= $aside ?></aside>
 
-</html>
+<?php
+
+// Importa fechamento do tema
+require_once(PATH . '/config/footer.php');
+
+?>
