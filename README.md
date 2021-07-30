@@ -3,7 +3,7 @@
 
 **Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
 
-Vamos, neste projeto, vamos criar um aplicativo Web (site de Internet) full stack, ou seja, front-end e back-end, usando as linguagens de computador citadas acima. Será um aplicativo pequeno, minimalista, mas totalmente funcional e com espaço para muitas implementações novas.
+Vamos, neste projeto, criar um aplicativo Web (site de Internet) full stack, ou seja, front-end e back-end, usando as linguagens de computador citadas acima. Será um aplicativo pequeno, minimalista, mas totalmente funcional e com espaço para muitas implementações novas.
 
 >  *Se você é **profissional da área** ou um **estudante avançado**, este projeto **não serve para você**, porque aborda os conceitos mais simples do desenvolvimento Web usando PHP, com foco na criação de um produto mais simples possível.*
 
@@ -11,10 +11,10 @@ Usaremos, na maior parte do tempo, o PHP procedural, com uma ou outra "pitada" d
 
 >  *Estamos preparando outro projeto que será, em sua maior parte, com PHP orientado a objetos. Este projeto começará a ser disponibilizado em breve, assim que este aqui tiver a versão 1.0 concluída.*
 
-	              ┌──────────┐     ←→╔══════════╗ 
-	              │index.php │     ←→║ database ║
-	              │(articles)│     ←→║   MySQL  ║
-	              └────┬─────┘     ←→╚══════════╝
+	              ┌──────────┐          ←→╔══════════╗ 
+	              │index.php │          ←→║ database ║
+	              │(articles)│          ←→║   MySQL  ║
+	              └────┬─────┘          ←→╚══════════╝
 	     ┌─────────────┼────────────┐      
 	┌────┴─────┐  ┌────┴─────┐  ┌───┴───┐  ←→╔═══════╗
 	│   view   │  │ contacts │  │ about │  ←→║ Theme ║
