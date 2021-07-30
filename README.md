@@ -1,4 +1,5 @@
 
+
 # First PHP App
 
 **Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
@@ -76,6 +77,9 @@ E não deixe de nos passar o endereço, juntamente com suas contribuições. Bas
  - Criação de uma área ou mesmo de um aplicativo administrativo (dashboard) para inserção e edição do conteúdo, sem a necessidade de interagir diretamente com o banco de dados.
  - Mais automatização do tema, explorando mais as possibilidades da tabela "config" e da array `$C`.
  - Criar um sistema de comentários para os artigos, com autenticação de usuários e moderação.
+ - Adicionar uma validação de humanidade (Recaptcha) no formulário de contatos.
+ - Adicionar uma seção de buscas no conteúdo do aplicativo.
+ - ...
 
 Se você quer ver algumas dessa implementações, acesse meu blog http://www.catabits.com.br.
 
