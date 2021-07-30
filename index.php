@@ -103,7 +103,7 @@ HTML;
 endif;
 
 // Listando categorias
-$aside = '<h3>Categorias</h3>' . aside_Categories();
+$aside = '<h3>Categorias</h3>' . aside_Categories(true);
 
 ///////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo terminam aqui. /////

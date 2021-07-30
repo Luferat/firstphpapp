@@ -1,21 +1,17 @@
 <?php
 
 /**
- * template.php
- * Página modelo para criação do tema do aplicativo.
- * Esta página servirá de modelo para todas as outras quando o tema estiver pronto.
+ * index.php
+ * Página principal da seção de contatos.
  */
 
 // Define constante com o diretório raiz (/) do aplicativo
-// Também podemos usar a constante mágica __DIR__, se disponível no servidor
 define('PATH', $_SERVER['DOCUMENT_ROOT']);
 
 // Importa arquivo de configuração da página
 require_once(PATH . '/config/config.php');
 
 ///// Título da página /////
-// Se vazio, teremos <title>Nome do aplicativo .:. Slogan do aplicativo</title>
-// Se definido, teremos <title>Nome do aplicativo .:. $title</title>
 $title = 'Faça Contato';
 
 //////////////////////////////////////////////////////////////
@@ -25,7 +21,7 @@ $title = 'Faça Contato';
 // Inicializa variáveis do script
 $contact_error = '';
 
-// TEmplate do formulário HTML
+// Template do formulário HTML
 $contact_form = <<<HTML
 
 <form method="post" id="contact" action="/contacts/index.php">
@@ -73,7 +69,7 @@ if (isset($_POST['contact_send'])) :
 
     // Detecta campos vazios (ou, não aprovados na sanitização)
     if ($name == '' or $email == '' or $subject == '' or $message == '') :
-        $contact_error = <<<HTML
+        $article = <<<HTML
    
    <h2>Faça contato</h2>
    <p>Preencha os campos abaixo para entrar em contato conosco.</p>
@@ -84,10 +80,10 @@ if (isset($_POST['contact_send'])) :
        <p>Não foi possível enviar seu contato.</p>
        <p>Por favor, preencha todos os campos e tente novamente.</p>
    </div>
+
+   {$contact_form}
    
    HTML;
-
-        $article = $contact_error . $contact_form;
 
     else :
 
@@ -101,8 +97,12 @@ if (isset($_POST['contact_send'])) :
         // Executa a query
         $stmt->execute();
 
-        // Envia e-mail para o admin
+        ///// Formata e-mail para o admin /////
+
+        // Assunto do e-mail
         $subject = "Contato de {$C['appTitle']}";
+
+        // Formata mensagem do e-mail
         $message = <<<MSG
 
 Olá {$C['appOwner']}!
@@ -120,10 +120,14 @@ Não responda esta mensagem.
 
 MSG;
 
+        // Formata cabeçalho do e-mail
         $headers = "From: {$C['appOwnerEmail']}\r\n";
+
+        // Envia e-mail
+        // Usamos '@' para evitar erros no XAMPP e no Windows
         @mail($C['appOwnerEmail'], $subject, $message, $headers);
 
-        // Transforma o nome em um array para obter só o primeiro nome ($names[0])
+        // Transforma o nome em uma array para obter só o primeiro nome ($names[0])
         $names = explode(' ', $name);
 
         // Feedback para usuário
@@ -145,7 +149,7 @@ MSG;
 else :
 
     // Exibe formulário de contatos
-    $article .= <<<HTML
+    $article = <<<HTML
 
 <h2>Faça contato</h2>
 <p>Preencha os campos abaixo para entrar em contato com '{$C['appTitle']}'.</p>

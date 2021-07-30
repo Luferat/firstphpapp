@@ -8,7 +8,7 @@
 // PHP com UTF-8
 header('Content-Type: text/html; charset=utf-8');
 
-// Define variáveis do tema
+// Declara variáveis do tema
 $article = $aside = '';
 
 // Declara variáveis das páginas
@@ -62,14 +62,12 @@ while ($data = $res->fetch_assoc()) :
 
 endwhile;
 
-// print_r($C); exit;
-
 // Lista as categorias de artigos
 // Se $count for true (default), exibe a quantidade de artigos na categoria
 function aside_Categories($count = true)
 {
 
-    // Conexão com banco de dados
+    // Importa conexão com banco de dados
     global $conn;
 
     // Obtém todas as categorias ordenando pelo nome e armazena resultados em $res

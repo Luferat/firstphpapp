@@ -1,3 +1,10 @@
+<?php
+
+/** footer.php
+ * Fechamento do tema das páginas do aplicativo.
+ */
+
+?>
 </main>
 
 <footer>

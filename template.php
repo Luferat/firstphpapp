@@ -3,7 +3,7 @@
 /**
  * template.php
  * Página modelo para criação do tema do aplicativo.
- * Esta página servirá de modelo para todas as outras quando o tema estiver pronto.
+ * Esta página serve de modelo para todas as outras páginas do aplicativo.
  */
 
 // Define constante com o diretório raiz (/) do aplicativo
@@ -22,7 +22,7 @@ $title = 'Página Modelo';
 ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
 //////////////////////////////////////////////////////////////
 
-// Conteúdo principal da página (EXEMPLO)
+// Conteúdo principal da página (HTML)
 $article = '';
 $aside = '';
 

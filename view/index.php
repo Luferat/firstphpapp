@@ -1,22 +1,18 @@
 <?php
 
 /**
- * template.php
- * Página modelo para criação do tema do aplicativo.
- * Esta página servirá de modelo para todas as outras quando o tema estiver pronto.
+ * index.php
+ * Página principal para exibição de artigo completo.
  */
 
 // Define constante com o diretório raiz (/) do aplicativo
-// Também podemos usar a constante mágica __DIR__, se disponível no servidor
 define('PATH', $_SERVER['DOCUMENT_ROOT']);
 
 // Importa arquivo de configuração da página
 require_once(PATH . '/config/config.php');
 
 ///// Título da página /////
-// Se vazio, teremos <title>Nome do aplicativo .:. Slogan do aplicativo</title>
-// Se definido, teremos <title>Nome do aplicativo .:. $title</title>
-$title = 'Página Modelo';
+$title = 'Artigo';
 
 //////////////////////////////////////////////////////////////
 ///// Os códigos PHP para gerar o conteúdo começam aqui. /////
@@ -55,9 +51,7 @@ $title = $art['art_title'];
 $article = <<<HTML
 
 <h2>{$art['art_title']}</h2>
-
 <div class="author-date">Por {$art['aut_name']} em {$art['art_datebr']}.</div>
-
 {$art['art_text']}
 
 HTML;

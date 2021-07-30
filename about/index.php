@@ -1,21 +1,17 @@
 <?php
 
 /**
- * template.php
- * Página modelo para criação do tema do aplicativo.
- * Esta página servirá de modelo para todas as outras quando o tema estiver pronto.
- */
+ * sobre.php
+ * Página principal da seção "Sobre" do aplicativo.
+  */
 
 // Define constante com o diretório raiz (/) do aplicativo
-// Também podemos usar a constante mágica __DIR__, se disponível no servidor
 define('PATH', $_SERVER['DOCUMENT_ROOT']);
 
 // Importa arquivo de configuração da página
 require_once(PATH . '/config/config.php');
 
 ///// Título da página /////
-// Se vazio, teremos <title>Nome do aplicativo .:. Slogan do aplicativo</title>
-// Se definido, teremos <title>Nome do aplicativo .:. $title</title>
 $title = 'Sobre';
 
 //////////////////////////////////////////////////////////////
@@ -47,16 +43,14 @@ SQL;
     // Armazena o conteúdo em $art[]
     $art = $res->fetch_assoc();
 
-    // Formata o título da página com o título do artigo
+    // Altera o título da página para o título do artigo
     $title = $art['art_title'];
 
     // Monta a view de <article>...</article>
     $article = <<<HTML
 
 <h2>{$art['art_title']}</h2>
-
 <div class="author-date">Por {$art['aut_name']}.</div>
-
 {$art['art_text']}
 
 HTML;

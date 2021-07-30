@@ -1,47 +1,82 @@
+
 # First PHP App
 
 **Este é um projeto para apoiar estudantes e entusiastas de desenvolvimento Web que estão dando seus primeiros passos na criação de aplicativos Web "full stack" com PHP, MySQL, HTML, CSS e JavaScript.**
 
 *Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
 
-## Atividade 15 - Processando o formulário
+## Atividade 16 - Seção sobre...
 
-Vamos, nessa atividade, processar os dados enviados pelo formulário de contatos. Basicamente, vamos validar e sanitizar os dados, enviar para o banco de dados e também enviar por e-mail para o proprietário/administrador do aplicativo.
+Uma sugestão para a seção "Sobre" do aplicativo Web? Desenvolva-a sozinho(a), sem a ajuda desta atividade. Será um exercício e tanto e você pode desenvolvê-la do jeito que quiser. Sugiro que esta seção tenha pelo menos 4 páginas:
 
-Precisamos do e-mail do proprietário/administrador do aplicativo para que possamos enviar o contato recebido para ele. Edite "firstphpsite.sql" conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_15/firstphpapp.sql), para adicionar na tabela `config` a chave `appOwnerEmail` e seu valor.
+- **Sobre o site** → Onde os visitantes obtêm mais informações sobre o aplicativo, como seus objetivos e até informações mais técnicas como plataformas...
 
-	-- Insere configurações do tema
-	INSERT INTO config (var, val) VALUES 
-		•••
-		('appOwner', 'Seu Nome'),
-		('appOwnerEmail', 'contato@firstphpsite.tk'),
-		('backgroundColor', '#ffffff'),
-		•••
-	;
+- **Quem faz** → Onde os visitantes obtêm mais informações sobre o proprietário, desenvolvedor, mantenedor, etc. 
 
-Abra o PHPMyAdmin (http://localhost/phpmyadmin) no navegador, vá até a guia SQL, cole todo o conteúdo de "firstphpsite.sql" lá e clique em [Executar].
+- **Sobre a privacidade** → Atendendo aos requisitos da legislação vigente, apresentamos o contrato de privacidade do aplicativo aqui.
 
-> *Já sabemos que este arquivo "firstphpsite.sql" é destrutivo, então, não tem problemas em colar ele inteiro...*
+- **Sobre os Cookies** → Essa página complementa a anterior, explicando o que são os cookies que o usuário deve aceitar para navegar no aplicativo.
 
-Edite então "contacts/index.php" para inserir os códigos de processamento do formulário, conforme [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_15/contacts/index.php).
+A sugestão é que você desenvolva algo dinâmico, usando o banco de dados do aplicativo, seja aproveitando a estrutura existente ou criando uma nova. Não existe fórmula, na verdade, temos várias formas de fazer essa seção...
 
-Primeiro, recebemos os dados dos campos e os armazenamos em variáveis. Por questões de segurança, vamos sanitizar esses dados em uma função `post_clean()` que vamos criar em "config/config.php" daqui a pouco.
+### Nosso modelo
 
-Caso esteja tudo ok, criamos um *feedback* para o usuário, salvamos os dados no banco de dados, enviamos e-mail para o proprietário do aplicativo e exibimos o *feedback* criado.
+Claro que não vamos deixar ninguém na mão, então, vamos ver uma, apenas uma forma de fazer essa atividade de revisão. Neste exemplo, vamos usar a estrutura de artigos já existente, assim, não precisamos criar uma nova tabela no banco de dados.
 
-Ainda para garantir a segurança do aplicativo, usamos o método `->prepare()` da extensão `mysqli` para sanitizar a query que insere os dados.
+Para começar, abra "firstphpapp.sql" no editor para alterar a estrutura da tabela "articles", inserindo o código abaixo logo no final do arquivo:
 
-Para enviar o e-mail, usamos a função `mail()`, nativa do PHP. Ela não funciona no XAMPP, por questões de segurança e anti-spam, então usamos um `@` na frente dela para que as mensagens de erro sejam ignoradas.
+	-- Altera estrutura da tabela "articles" para receber a seção "Sobre"
+	ALTER TABLE `articles` CHANGE
+	`art_status` `art_status` ENUM('inativo', 'ativo', 'sobre') NOT NULL DEFAULT 'ativo';
 
-Se atualizar a página http://firstphpapp.localhost/contacts, receberemos alguns erros, então, vamos ajustar as outras páginas.
+O que fizemos foi adicionar o opção "sobre" na lista do campo "art_status" (ENUM) que já contém "ativo" e "inativo".
 
-Abra e edite "config/config.php" para adicionar a função `post_clean()` que sanitiza os dados dos campos. Siga [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_15/config/config.php) para isso. A função é bem simples, usa filtros do PHP e dá espaço para outras implementações...
+Ainda neste arquivo, vamos inserir o SQL necessário para criar os conteúdos da seção "Sobre" na tabela "articles". Só temos que ter o cuidado de adicionar o valor "sobre" no campo "art_status" na inserção. Use [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_16/firstphpapp.sql) para facilitar.
 
-Agora sim, atualize http://firstphpapp.localhost/contacts e teste o formulário exaustivamente em busca de falhas e para fazer ajustes.
+Rode este script no PHPMyAdmin para recriar o banco de dados com as novas especificações.
 
-Está gostando? Achou algum *bug*? Tem sugestões? Então, contribua [clicando aqui](https://github.com/Luferat/firstphpapp/issues).
+ Com o banco de dados atualizado, abra e edite "about/index.php" usando [este modelo](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_16/about/index.php).  Essa página vai listar os "artigos" disponíveis na seção "Sobre" e também exibir cada um, individualmente, ou seja, ela é uma revisão de "index.php" e "view/index.php", com uma pitadinha de "config/config.php".
 
-Até a próxima atividade...
+- Começamos alterando o valor de `$title` (`$title = 'Sobre';`);
 
-← [Atividade 14](https://github.com/Luferat/firstphpapp/tree/Atividade_14) │ **Atividade 15** │ [Atividade 16](https://github.com/Luferat/firstphpapp/tree/Atividade_16) →
+-  Em seguida, tentamos obter o Id de um artigo e armazenar em `$aid`. Se conseguimos, vamos obter este artigo especifico no banco de dados, com a query:
 
+		SELECT * FROM articles
+		INNER JOIN authors ON aut_id = `art_author`
+		WHERE art_id = '{$aid}'
+		AND art_status = 'sobre' 
+
+- Formatamos e exibimos o conteúdo completo no HTML;
+- Mas, se o artigo solicitado não existe ou, simplesmente não solicitou um artigo, usando a query abaixo, obtemos todos os artigos cadastrados em "Sobre" (`art_status = 'sobre'`):
+
+      SELECT art_id, art_image, art_title, art_intro
+      FROM `articles`
+      WHERE `art_status` = 'sobre'
+      ORDER BY art_date DESC
+
+Formatamos a listagem e enviamos para o HTML, na variável `$article`.
+
+Na sequência, formatamos a `<aside>...</aside>` com uma lista de artigos em "Sobre" e, quando estamos exibindo um artigo único, mostramos os dados do autor também.
+
+Precisamos melhorar a "view", editando o SQL. Para facilitar, vamos reutilizar o SQL da página "view" (view/index.css):
+
+- Abra "view/index.css", copie todo o seu conteúdo e cole no final de "global.css";
+
+- Apague "view/index.css" e pronto. O modelo finalizado de "global.css" [está aqui](https://raw.githubusercontent.com/Luferat/firstphpapp/Atividade_16/global.css).
+
+Teste exaustivamente todo o site em busca de ajustes e bugs menores, uma bela vistoria nos códigos fonte, incluindo os comentários, também é boa prática, porque, sempre deixamos passar alguma coisa.
+
+E... Nossas atividades terminam por aqui, mas, não o desenvolvimento do aplicativo. Ainda temos muito a implementar, coisas legais para fazer, novas páginas e seções... Mas isso já foge do escopo deste projeto, então, agora, pegue esses códigos, revise com calma, personalize e publique seu próprio site, com seu próprio conteúdo.
+
+E não deixe de nos passar o endereço, juntamente com suas contribuições. Basta [clicar aqui](https://github.com/Luferat/firstphpapp/issues) e abrir uma issue!
+
+### Sugestões de upgrade
+ - Fazer a paginação na listagem dos artigos.
+ - Criar uma mensagem de aceite de cookies usando, justamente, cookies do PHP.
+ - Criação de uma área ou mesmo de um aplicativo administrativo (dashboard) para inserção e edição do conteúdo, sem a necessidade de interagir diretamente com o banco de dados.
+ - Mais automatização do tema, explorando mais as possibilidades da tabela "config" e da array `$C`.
+ - Criar um sistema de comentários para os artigos, com autenticação de usuários e moderação.
+
+Se você quer ver algumas dessa implementações, acesse meu blog http://www.catabits.com.br.
+
+← [Atividade 15](https://github.com/Luferat/firstphpapp/tree/Atividade_15) │ **Atividade 16** 
