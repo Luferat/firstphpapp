@@ -8,6 +8,9 @@
 // PHP com UTF-8
 header('Content-Type: text/html; charset=utf-8');
 
+// Define fusohorário do aplicativo
+date_default_timezone_set('America/Sao_Paulo');
+
 // Declara variáveis do tema
 $article = $aside = '';
 
