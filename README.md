@@ -6,7 +6,7 @@
 
 ## Uma dica valiosa!
 
-Mantenha a tecla "Control" [Ctrl] pressionada ao clicar em qualquer link desta documentação [Ctrl] → "click"...
+Mantenha a tecla "Control" [Ctrl] pressionada ao clicar em qualquer link desta documentação: [Ctrl] → "click"...
 
 ## Atividade 1 - Estrutura inicial
 
