@@ -4,6 +4,10 @@
 
 *Se você caiu nesta atividade "de paraquedas", [clique aqui](https://github.com/Luferat/firstphpapp) para começar "do jeito certo"!*
 
+## Uma dica valiosa!
+
+Mantenha a tecla "Control" [Ctrl] pressionada ao clicar em qualquer link desta documentação [Ctrl] → "click"...
+
 ## Atividade 1 - Estrutura inicial
 
 Como vimos na [introdução](https://github.com/Luferat/firstphpapp), vamos desenvolver um aplicativo full stack simples usando PHP como back-end. Acesse o diretório do projeto no seu computador, que criamos na [introdução](https://github.com/Luferat/firstphpapp), e crie a estrutura de diretórios necessária. No exemplo abaixo (e em todos os outros), estamos usando o XAMPP para Windows, instalado do diretório padrão (C:\xampp\). Altere para o diretório raiz do seu servidor Web, se necessário:
